@@ -1,0 +1,16 @@
+{
+  "name": "eng1005-study-guide",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "@astrojs/markdown-satteri": "^0.4.10",
+    "@astrojs/starlight": "^0.43.2",
+    "astro": "^7.4.13"
+  }
+}

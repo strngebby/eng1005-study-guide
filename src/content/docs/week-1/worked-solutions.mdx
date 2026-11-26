@@ -1,0 +1,68 @@
+---
+title: Worked solutions
+description: Try each step yourself before revealing it.
+sidebar:
+  order: 2
+---
+import StepReveal from '../../../components/StepReveal.astro';
+
+<p class="lead">Try each step yourself before revealing it.</p>
+
+## 1. Length, unit vector and angle with an axis
+
+<StepReveal
+	problem="For v = (2, −3, 6), find |v|, v̂ and the angle v makes with k."
+	steps={[
+		['Square, add, root', '|v| = √(4 + 9 + 36) = √49 = 7'],
+		['Divide by the length', 'v̂ = (2/7, −3/7, 6/7)'],
+		['Read the direction cosine', 'cos ψ = 6/7, so ψ ≈ 31.0°'],
+	]}
+/>
+
+## 2. Angle between two vectors
+
+<StepReveal
+	problem="Find the angle between a = (2, 1, 2) and b = (3, −4, 0)."
+	steps={[
+		['Dot product', 'a·b = 6 − 4 + 0 = 2'],
+		['Lengths', '|a| = 3,  |b| = 5'],
+		['Rearrange the dot product', 'cos θ = 2/15, so θ ≈ 82.3°'],
+	]}
+/>
+
+## 3. Area of a triangle
+
+<StepReveal
+	problem="Find the area of the triangle A(1, 0, 2), B(3, 1, 1), C(2, 4, 3)."
+	steps={[
+		['Two sides from the same corner', 'AB = (2, 1, −1),  AC = (1, 4, 1)'],
+		['Cross product', 'AB × AC = (1·1 − (−1)·4,  (−1)·1 − 2·1,  2·4 − 1·1)\n        = (5, −3, 7)'],
+		['Half the length', 'area = ½√(25 + 9 + 49) = √83 / 2 ≈ 4.55'],
+	]}
+/>
+
+## 4. Skew lines and their distance
+
+<StepReveal
+	problem={'L1: (1, 0, 2) + s(1, 2, 0)\nL2: (2, 1, 0) + t(0, 1, 1)\nDo they meet? If not, how far apart are they?'}
+	steps={[
+		['Rule out parallel', '(1, 2, 0) is not a multiple of (0, 1, 1).'],
+		['Solve x and y', '1 + s = 2  →  s = 1\n2s = 1 + t  →  t = 1'],
+		['Check z', 'L1 gives 2, L2 gives 1. Contradiction, so the lines are skew.'],
+		['Common normal', 'n = (1,2,0) × (0,1,1) = (2, −1, 1)'],
+		['Project the gap onto n', 'a₂ − a₁ = (1, 1, −2)\nd = |2 − 1 − 2| / √6 = 1/√6 ≈ 0.408'],
+	]}
+/>
+
+## 5. Plane through three points, then a line hitting it
+
+<StepReveal
+	problem="Find the plane through P(1, 1, 0), Q(3, 0, 1), R(2, 2, 2). Where does (4, 1, 1) + s(1, 2, −1) meet it?"
+	steps={[
+		['Two directions', 'PQ = (2, −1, 1),  PR = (1, 1, 2)'],
+		['Normal', 'PQ × PR = (−3, −3, 3). Divide by −3: n = (1, 1, −1)'],
+		['Use point P', 'x + y − z = 2   (check R: 2 + 2 − 2 = 2 ✓)'],
+		['Substitute the line', '(4+s) + (1+2s) − (1−s) = 2\n4 + 4s = 2  →  s = −1/2'],
+		['Find the point', '(3.5, 0, 1.5)'],
+	]}
+/>

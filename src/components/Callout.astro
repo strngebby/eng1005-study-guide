@@ -1,0 +1,9 @@
+---
+/** Dashed side note, e.g. <Callout label="Watch out">…</Callout> */
+interface Props { label: string }
+const { label } = Astro.props;
+---
+<div class="ex"><span class="label">{label}</span><br /><slot /></div>
+<style>
+	.ex { border: 1px dashed var(--line); background: var(--paper); border-radius: 3px; padding: 10px 14px; margin: 10px 0; }
+</style>

@@ -1,0 +1,20 @@
+/* Printing: Starlight already hides the sidebar and table of contents
+   (print:hidden). Here we hide the rest of the chrome and make sure
+   hints and answers never appear on paper, even if they were opened. */
+@media print {
+	/* Always print with the light palette, even from dark mode */
+	:root, :root[data-theme='dark'], :root[data-theme='light'] {
+		--paper: #fff; --card: #fff; --ink: #302c3a; --dim: #68627a; --line: #ddd8e5;
+		--accent: #6d5f8f; --soft: #e9e5f1; --b: #a85b30; --c: #2f7a73;
+		color-scheme: light;
+	}
+	header.header,
+	.print-hide,
+	.pagination-links,
+	mobile-starlight-toc,
+	.meta { display: none !important; }
+	.main-frame { padding-top: 0 !important; padding-inline-start: 0 !important; }
+	details.reveal { display: none !important; }
+	.card { break-inside: avoid; border-color: #bbb; }
+	.problem { break-inside: avoid; }
+}

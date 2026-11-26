@@ -1,0 +1,9 @@
+---
+/** Prints the current page. Hidden on paper. */
+interface Props { label?: string }
+const { label = 'Print' } = Astro.props;
+---
+<div class="print-hide not-content"><button class="btn alt" type="button" data-print>{label}</button></div>
+<script>
+	document.querySelectorAll('[data-print]').forEach((b) => b.addEventListener('click', () => window.print()));
+</script>

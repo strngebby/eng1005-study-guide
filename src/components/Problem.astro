@@ -1,0 +1,15 @@
+---
+/** One problem-sheet problem with a hidden final answer. */
+import Reveal from './Reveal.astro';
+interface Props { n: number; q: string; a: string }
+const { n, q, a } = Astro.props;
+---
+<div class="problem">
+	<span class="label">Problem {n}</span>
+	<div class="q">{q}</div>
+	<Reveal label="Final answer" eq={a} />
+</div>
+<style>
+	.problem { border-left: 3px solid var(--accent); padding-left: 12px; margin: 12px 0; }
+	.q { white-space: pre-line; margin-top: 0; }
+</style>

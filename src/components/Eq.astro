@@ -1,0 +1,9 @@
+---
+/** Monospace equation block. Line breaks and spacing are kept exactly:
+ *  <Eq>{`a·b = |a||b| cos θ
+ *  a·a = |a|²`}</Eq> */
+---
+<div class="eq"><slot /></div>
+<style>
+	.eq { font-family: var(--mono); font-size: .92rem; background: var(--soft); border-left: 3px solid var(--accent); padding: 8px 12px; margin: 8px 0; white-space: pre-wrap; overflow-x: auto; }
+</style>

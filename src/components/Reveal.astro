@@ -1,0 +1,19 @@
+---
+/**
+ * Hidden hint or answer, opened on click. Never printed.
+ *   <Reveal label="Hint">Look for a dot product of 0.</Reveal>
+ *   <Reveal label="Final answer" eq="(7, −7, 7)" />
+ */
+import Eq from './Eq.astro';
+interface Props { label: string; eq?: string }
+const { label, eq } = Astro.props;
+---
+<details class="reveal not-content">
+	<summary>{label}</summary>
+	{eq !== undefined ? <Eq>{eq}</Eq> : <p><slot /></p>}
+</details>
+<style>
+	details { margin-top: 8px; border: 0; padding: 0; }
+	details :global(p) { margin: 8px 0; }
+	summary { cursor: pointer; color: var(--accent); font-weight: 500; }
+</style>

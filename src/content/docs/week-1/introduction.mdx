@@ -1,0 +1,135 @@
+---
+title: Vectors, lines and planes
+description: Describe position and direction in 3D, then use it to find angles, areas, distances and intersections.
+sidebar:
+  label: Introduction and explanation
+  order: 1
+---
+import Eq from '../../../components/Eq.astro';
+import Callout from '../../../components/Callout.astro';
+import Figure3D from '../../../components/Figure3D.astro';
+import { FIG } from '../../../data/week-1/figures';
+
+<p class="lead">Describe position and direction in 3D, then use it to find angles, areas, distances and intersections.</p>
+
+## What a vector is
+
+A **scalar** is a size only, such as 5 m. A **vector** has a size and a direction, such as 5 m north-east. In 3D we write it as three moves along x, y and z.
+
+<Eq>{`v = (v₁, v₂, v₃) = v₁i + v₂j + v₃k`}</Eq>
+
+i, j and k are the unit vectors along the three axes.
+
+<Figure3D {...FIG.comp} />
+
+## Adding, scaling, length
+
+Add, subtract and scale one component at a time. A negative multiple reverses the direction.
+
+<Eq>{`|v| = √(v₁² + v₂² + v₃²)
+unit vector:  v̂ = v / |v|
+from A to B:  AB = b − a`}</Eq>
+
+<Callout label="Watch out">You can never divide by a vector, and a scalar can never equal a vector.</Callout>
+
+<Figure3D {...FIG.add} />
+
+## Direction cosines
+
+If θ, φ and ψ are the angles v makes with i, j and k, then the unit vector lists their cosines.
+
+<Eq>{`v̂ = (cos θ, cos φ, cos ψ)
+cos²θ + cos²φ + cos²ψ = 1`}</Eq>
+
+So if you know two angles, the third is fixed apart from a ± sign. Check whether it is acute or obtuse.
+
+## Dot product
+
+Takes two vectors and gives a **number**. Use it for angles, perpendicularity and shadows.
+
+<Eq>{`a·b = a₁b₁ + a₂b₂ + a₃b₃ = |a||b| cos θ
+a·a = |a|²          a ⟂ b  ⇔  a·b = 0  (non-zero a, b)
+scalar projection of b on a = b·â
+vector projection          = (b·â) â`}</Eq>
+
+<Figure3D {...FIG.dot} />
+
+## Cross product
+
+Takes two vectors and gives a **vector** perpendicular to both. The right-hand rule picks which way it points.
+
+<Eq>{`a × b = (a₂b₃ − a₃b₂,  a₃b₁ − a₁b₃,  a₁b₂ − a₂b₁)
+|a × b| = |a||b| sin θ = parallelogram area
+triangle area = ½ |AB × AC|
+b × a = −(a × b)      parallel vectors give 0`}</Eq>
+
+Check your answer: its dot product with a and with b must both be 0.
+
+<Figure3D {...FIG.cross} />
+
+## Scalar triple product
+
+The volume of a parallelepiped is base area times height, which becomes one expression.
+
+<Eq>{`volume = |a·(b × c)|
+a·(b × c) = b·(c × a) = c·(a × b)`}</Eq>
+
+A result of 0 means the three vectors lie in one plane.
+
+<Figure3D {...FIG.triple} />
+
+## Lines
+
+A line needs a point a and a direction b. Through two points P and Q, use b = Q − P. Any non-zero multiple of b describes the same line.
+
+<Eq>{`vector:      x(s) = a + s b
+parametric:  x = a₁+sb₁,  y = a₂+sb₂,  z = a₃+sb₃
+symmetric:   (x−a₁)/b₁ = (y−a₂)/b₂ = (z−a₃)/b₃   (all bᵢ ≠ 0)`}</Eq>
+
+**Is a point on the line?** All three equations must give the same s.
+
+<Figure3D {...FIG.line} />
+
+## Two lines: how are they related?
+
+Give the lines **different parameters** (s and t).
+
+| Directions parallel? | Common point? | Result |
+| --- | --- | --- |
+| Yes | Yes | Same line |
+| Yes | No | Parallel |
+| No | Yes | Intersecting |
+| No | No | Skew |
+
+To test for a common point, solve two component equations, then check the third.
+
+<Eq>{`skew:      n = b₁ × b₂,   d = |(a₂ − a₁)·n| / |n|
+parallel:  d = |(a₂ − a₁) × b| / |b|
+point P to line a + sb:   d = |(P − a) × b| / |b|`}</Eq>
+
+<Figure3D {...FIG.skew} />
+
+## Planes
+
+A plane can be built from a point and two non-parallel directions, or from a point and a normal.
+
+<Eq>{`parametric:  x(s,t) = a + s b₁ + t b₂
+vector:      x·n = a·n,   n = b₁ × b₂
+Cartesian:   n₁x + n₂y + n₃z = d
+distance from origin = |d| / |n|`}</Eq>
+
+**Line meets plane:** substitute x(s), y(s), z(s) into the Cartesian equation and solve for s. No solution means the line is parallel and off the plane; every s works means it lies in the plane.
+
+Three planes may meet at one point, along a line, or have no common point.
+
+<Figure3D {...FIG.plane} />
+
+## Which tool do I use?
+
+| You want | Use |
+| --- | --- |
+| Angle or perpendicular test | Dot product |
+| Normal or area | Cross product |
+| Volume or coplanar test | Triple product |
+| Where things meet | Set equations equal, or substitute |
+| Shortest distance | Project onto the perpendicular direction |

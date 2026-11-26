@@ -1,0 +1,32 @@
+---
+/**
+ * Rotatable 3D figure. Pass a figure definition from src/data/week-N/figures.ts:
+ *   <Figure3D {...FIG.dot} />
+ * The first frame is drawn at build time, so it shows even without JavaScript.
+ */
+import { render, type FigItem } from '../lib/figure3d';
+interface Props { cap: string; items: FigItem[]; angle?: number }
+const { cap, items, angle = 30 } = Astro.props;
+---
+<figure class="fig3d not-content" data-items={JSON.stringify(items)}>
+	<svg viewBox="0 0 320 260" role="img" aria-label={cap} set:html={render(items, angle)} />
+	<input type="range" min="-60" max="100" value={angle} aria-label="Rotate figure" class="print-hide" />
+	<figcaption>{cap} <span class="print-hide">Drag the slider to rotate.</span></figcaption>
+</figure>
+
+<script>
+	import { render } from '../lib/figure3d';
+	document.querySelectorAll<HTMLElement>('figure.fig3d').forEach((fig) => {
+		const svg = fig.querySelector('svg')!, range = fig.querySelector('input')!;
+		const items = JSON.parse(fig.dataset.items!);
+		range.addEventListener('input', () => { svg.innerHTML = render(items, +range.value); });
+	});
+</script>
+
+<style>
+	figure { margin: 0; }
+	svg { display: block; width: 100%; height: auto; background: var(--paper); border: 1px solid var(--line); border-radius: 3px; touch-action: pan-y; }
+	svg :global(text) { font: 500 13px var(--mono); }
+	input[type='range'] { width: 100%; accent-color: var(--accent); margin: 6px 0 0; }
+	figcaption { font-size: .8rem; color: var(--dim); margin-top: 5px; }
+</style>

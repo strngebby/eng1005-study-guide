@@ -1,0 +1,53 @@
+---
+/**
+ * Worked solution revealed one step at a time.
+ *   <StepReveal problem="Find …" steps={[['Step name', 'working'], …]} />
+ */
+import Eq from './Eq.astro';
+interface Props { problem: string; steps: [string, string][] }
+const { problem, steps } = Astro.props;
+const N = steps.length;
+---
+<step-reveal data-total={N}>
+	<p class="q">{problem}</p>
+	<div class="steps">
+		{steps.map(([name, work], i) => (
+			<div class="step" hidden>
+				<span class="label">Step {i + 1}: {name}</span>
+				<Eq>{work}</Eq>
+			</div>
+		))}
+	</div>
+	<div class="row not-content print-hide">
+		<button class="btn" data-next>Show step 1 of {N}</button>
+		<button class="btn alt" data-reset>Start again</button>
+	</div>
+</step-reveal>
+
+<script>
+	class StepReveal extends HTMLElement {
+		connectedCallback() {
+			const total = +this.dataset.total!;
+			const steps = [...this.querySelectorAll<HTMLElement>('.step')];
+			const next = this.querySelector<HTMLButtonElement>('[data-next]')!;
+			const reset = this.querySelector<HTMLButtonElement>('[data-reset]')!;
+			let shown = 0;
+			const sync = () => {
+				steps.forEach((s, i) => (s.hidden = i >= shown));
+				next.disabled = shown === total;
+				next.textContent = shown === total ? 'All steps shown' : `Show step ${shown + 1} of ${total}`;
+			};
+			next.addEventListener('click', () => { if (shown < total) { shown++; sync(); } });
+			reset.addEventListener('click', () => { shown = 0; sync(); });
+		}
+	}
+	customElements.define('step-reveal', StepReveal);
+</script>
+
+<style>
+	step-reveal { display: block; }
+	.q { white-space: pre-line; }
+	.step { border-left: 3px solid var(--accent); padding-left: 12px; margin: 12px 0; }
+	.step[hidden] { display: none; }
+	.row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 10px; }
+</style>

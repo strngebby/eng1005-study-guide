@@ -1,0 +1,88 @@
+---
+/**
+ * Instant-check quiz with a running score.
+ * Each question: [prompt, options | null, answer, hint, explanation]
+ *   options = null  → typed numeric answer, `answer` is the number
+ *   options = [...] → multiple choice, `answer` is the index of the right option
+ */
+import Reveal from './Reveal.astro';
+export type QuizQ = [string, string[] | null, number, string, string];
+interface Props { questions: QuizQ[] }
+const { questions } = Astro.props;
+---
+<quiz-box class="not-content" data-q={JSON.stringify(questions)}>
+	<p class="label score" aria-live="polite">Score 0 / {questions.length}</p>
+	{questions.map((q, i) => (
+		<section class="card" data-i={i}>
+			<span class="label">Question {i + 1}</span>
+			<p>{q[0]}</p>
+			{q[1]
+				? q[1].map((o, j) => <button class="opt" type="button" data-o={j}>{o}</button>)
+				: (
+					<form class="row">
+						<input type="text" inputmode="decimal" aria-label={`Your answer to question ${i + 1}`} />
+						<button class="btn">Check</button>
+					</form>
+				)}
+			<Reveal label="Hint">{q[3]}</Reveal>
+			<div class="out" aria-live="polite"></div>
+		</section>
+	))}
+</quiz-box>
+
+<script>
+	type QuizQ = [string, string[] | null, number, string, string];
+
+	/** Is a typed answer correct? `typed` is exactly what the student entered. */
+	function isCorrect(typed: string, answer: number): boolean {
+		// Accept Unicode minus signs and surrounding spaces; reject blanks and extra text.
+		const v = typed.trim().replace(/[−–]/g, '-');
+		if (v === '') return false;
+		const n = Number(v);
+		return Number.isFinite(n) && Math.abs(n - answer) < 0.01;
+	}
+
+	class QuizBox extends HTMLElement {
+		connectedCallback() {
+			const Q: QuizQ[] = JSON.parse(this.dataset.q!);
+			const solved: Record<number, boolean> = {};
+			const score = this.querySelector('.score')!;
+			const mark = (card: HTMLElement, ok: boolean) => {
+				const i = +card.dataset.i!;
+				solved[i] = ok;
+				card.querySelector('.out')!.innerHTML =
+					`<div class="fb ${ok ? 'ok' : 'no'}"><b>${ok ? 'Correct.' : 'Not yet.'}</b> ${ok ? Q[i][4] : 'Check the hint and try again.'}</div>`;
+				score.textContent = `Score ${Object.values(solved).filter(Boolean).length} / ${Q.length}`;
+			};
+			this.addEventListener('click', (e) => {
+				const b = (e.target as HTMLElement).closest<HTMLButtonElement>('button.opt');
+				if (!b) return;
+				const card = b.closest<HTMLElement>('section')!;
+				const ok = +b.dataset.o! === Q[+card.dataset.i!][2];
+				card.querySelectorAll('.opt').forEach((o) => o.classList.remove('right', 'wrong'));
+				b.classList.add(ok ? 'right' : 'wrong');
+				mark(card, ok);
+			});
+			this.addEventListener('submit', (e) => {
+				e.preventDefault();
+				const form = e.target as HTMLFormElement, card = form.closest<HTMLElement>('section')!;
+				mark(card, isCorrect(form.querySelector('input')!.value, Q[+card.dataset.i!][2]));
+			});
+		}
+	}
+	customElements.define('quiz-box', QuizBox);
+</script>
+
+<style>
+	quiz-box { display: block; }
+	.card { background: var(--card); border: 1px solid var(--line); border-radius: 4px; padding: 18px 20px; margin-bottom: 14px; }
+	.card p { margin: 8px 0; }
+	.opt { display: block; width: 100%; text-align: left; background: var(--paper); color: var(--ink); border: 1px solid var(--line); padding: 9px 12px; border-radius: 3px; margin: 6px 0; font: inherit; cursor: pointer; }
+	.opt.right { border-color: var(--good); background: var(--gsoft); }
+	.opt.wrong { border-color: var(--bad); background: var(--bsoft); }
+	.row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 10px; }
+	input[type='text'] { background: var(--paper); color: var(--ink); border: 1px solid var(--line); border-radius: 3px; padding: 8px 10px; width: 170px; font-family: var(--mono); font-size: 1rem; }
+	.out :global(.fb) { padding: 9px 12px; border-radius: 3px; margin-top: 10px; }
+	.out :global(.fb.ok) { background: var(--gsoft); }
+	.out :global(.fb.no) { background: var(--bsoft); }
+</style>

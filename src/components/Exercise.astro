@@ -1,0 +1,10 @@
+---
+/** A question with a hidden hint and a hidden worked solution. */
+import Reveal from './Reveal.astro';
+interface Props { q: string; hint: string; solution: string }
+const { q, hint, solution } = Astro.props;
+---
+<p class="q">{q}</p>
+<Reveal label="Hint">{hint}</Reveal>
+<Reveal label="Worked solution" eq={solution} />
+<style>.q { white-space: pre-line; }</style>
