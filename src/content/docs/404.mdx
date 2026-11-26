@@ -1,0 +1,12 @@
+---
+title: Page not found
+template: splash
+editUrl: false
+pagination: false
+---
+export const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+<p class="lead">This page doesn't exist. The address may be mistyped or out of date.</p>
+
+- <a href={`${base}/`}>Go to the home page</a>
+- <a href={`${base}/week-1/introduction/`}>Week 1: Vectors, lines and planes</a>

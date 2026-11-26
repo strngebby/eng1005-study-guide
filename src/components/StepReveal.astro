@@ -2,14 +2,15 @@
 /**
  * Worked solution revealed one step at a time.
  *   <StepReveal problem="Find …" steps={[['Step name', 'working'], …]} />
+ * `problem` is optional (the problem sheet shows the question itself).
  */
 import Eq from './Eq.astro';
-interface Props { problem: string; steps: [string, string][] }
+interface Props { problem?: string; steps: [string, string][] }
 const { problem, steps } = Astro.props;
 const N = steps.length;
 ---
 <step-reveal data-total={N}>
-	<p class="q">{problem}</p>
+	{problem && <p class="q">{problem}</p>}
 	<div class="steps">
 		{steps.map(([name, work], i) => (
 			<div class="step" hidden>

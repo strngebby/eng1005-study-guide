@@ -14,7 +14,8 @@
 	mobile-starlight-toc,
 	.meta { display: none !important; }
 	.main-frame { padding-top: 0 !important; padding-inline-start: 0 !important; }
-	details.reveal { display: none !important; }
+	details.reveal,
+	step-reveal .steps { display: none !important; }
 	.card { break-inside: avoid; border-color: #bbb; }
 	.problem { break-inside: avoid; }
 }

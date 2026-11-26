@@ -1,15 +1,22 @@
 ---
-/** One problem-sheet problem with a hidden final answer. */
+/**
+ * One problem-sheet problem: optional step-by-step working, then a hidden
+ * final answer.
+ *   <Problem n={1} q="…" steps={[['Step name', 'working'], …]} a="…" />
+ */
 import Reveal from './Reveal.astro';
-interface Props { n: number; q: string; a: string }
-const { n, q, a } = Astro.props;
+import StepReveal from './StepReveal.astro';
+interface Props { n: number; q: string; a: string; steps?: [string, string][] }
+const { n, q, a, steps } = Astro.props;
 ---
 <div class="problem">
 	<span class="label">Problem {n}</span>
 	<div class="q">{q}</div>
+	{steps && <StepReveal steps={steps} />}
 	<Reveal label="Final answer" eq={a} />
 </div>
 <style>
 	.problem { border-left: 3px solid var(--accent); padding-left: 12px; margin: 12px 0; }
 	.q { white-space: pre-line; margin-top: 0; }
+	.problem :global(.step) { border-left-color: var(--line); }
 </style>

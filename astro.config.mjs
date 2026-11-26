@@ -20,6 +20,8 @@ const BASE = '/eng1005-study-guide';
 export default defineConfig({
 	site: SITE,
 	base: BASE,
+	// A week's folder address (e.g. /week-1/) opens that week's first page.
+	redirects: Object.fromEntries(weeks.map((w) => [`/week-${w.n}`, `${BASE}/week-${w.n}/introduction/`])),
 	markdown: { processor: satteri({ hastPlugins: [cardsPlugin()] }) },
 	integrations: [
 		starlight({
