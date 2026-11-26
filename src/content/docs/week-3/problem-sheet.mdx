@@ -1,0 +1,42 @@
+---
+title: "Problem sheet"
+description: "21 mixed problems, easy to hard. Write full working, then open the answer."
+sidebar:
+  order: 4
+---
+import Problem from '../../../components/Problem.astro';
+import PrintButton from '../../../components/PrintButton.astro';
+
+<p class="lead">21 mixed problems, easy to hard. Write full working, then open the answer.</p>
+
+<PrintButton label="Print problem sheet" />
+
+## A. Warm-up
+
+<Problem n={1} q={"A = [2 −1; 0 3], B = [1 4; −2 1]. Find 3A − B."} steps={[["Multiply A by 3","3A = [6 −3; 0 9]"],["Subtract B entry by entry","[6 − 1  −3 − 4; 0 + 2  9 − 1] = [5 −7; 2 8]"]]} a={"[5 −7; 2 8]"} />
+<Problem n={2} q={"Using the same matrices, find AB."} steps={[["Row 1 of A with each column of B","2·1 + (−1)(−2) = 4\n2·4 + (−1)·1 = 7"],["Row 2 of A with each column of B","0·1 + 3(−2) = −6\n0·4 + 3·1 = 3"],["Assemble","AB = [4 7; −6 3]"]]} a={"[4 7; −6 3]"} />
+<Problem n={3} q={"Write the transpose of [1 2 3; 4 5 6]."} steps={[["Rows become columns","row (1, 2, 3) → column 1\nrow (4, 5, 6) → column 2"],["Write it out","[1 4; 2 5; 3 6]"]]} a={"[1 4; 2 5; 3 6]"} />
+<Problem n={4} q={"P is 3 × 2, Q is 2 × 4, R is 4 × 4. Which of PQ, QP, QR, RP, R² are defined?"} steps={[["Rule","(m × n)(n × q) needs the inner numbers to match"],["Check each","PQ: (3 × 2)(2 × 4) ✓\nQP: (2 × 4)(3 × 2) ✗\nQR: (2 × 4)(4 × 4) ✓\nRP: (4 × 4)(3 × 2) ✗\nR²: (4 × 4)(4 × 4) ✓"]]} a={"PQ, QR and R²"} />
+<Problem n={5} q={"Find det [−3 2; 4 1]."} steps={[["ad − bc","(−3)(1) − (2)(4) = −3 − 8 = −11"]]} a={"−11"} />
+<Problem n={6} q={"Find the inverse of [4 7; 1 2]."} steps={[["Determinant","4·2 − 7·1 = 1"],["2 × 2 formula","(1/1) [2 −7; −1 4] = [2 −7; −1 4]"]]} a={"[2 −7; −1 4]"} />
+
+## B. Core skills
+
+<Problem n={7} q={"Find the single matrix: stretch x by 3, then rotate 90° anticlockwise."} steps={[["Write each matrix","S = [3 0; 0 1],  R = [0 −1; 1 0]"],["The first action goes on the right","RS = [0·3 + (−1)·0   0·0 + (−1)·1; 1·3 + 0·0   1·0 + 0·1]\n   = [0 −1; 3 0]"]]} a={"[0 −1; 3 0]"} />
+<Problem n={8} q={"T(1, 2) = (4, 1) and T(0, 1) = (1, −1). Find T."} steps={[["Use T(0, 1) directly","second column = (1, −1)"],["Find T(1, 0)","T(1, 0) = T(1, 2) − 2T(0, 1)\n        = (4, 1) − (2, −2) = (2, 3)"],["Assemble","T = [2 1; 3 −1]"]]} a={"[2 1; 3 −1]"} />
+<Problem n={9} q={"For A = [2 0; 0 −1], find Aⁿ."} steps={[["Square it","A² = [4 0; 0 1]"],["Spot the pattern","Powers of a diagonal matrix raise each diagonal entry to that power"],["Result","Aⁿ = [2ⁿ 0; 0 (−1)ⁿ]"]]} a={"[2ⁿ 0; 0 (−1)ⁿ]"} />
+<Problem n={10} q={"N = [0 1 2; 0 0 3; 0 0 0]. Find N² and N³."} steps={[["Row 1 of N with each column of N","(0,1,2)·(0,0,0) = 0\n(0,1,2)·(1,0,0) = 0\n(0,1,2)·(2,3,0) = 3"],["Rows 2 and 3","(0,0,3) and (0,0,0) give 0 with every column"],["N²","N² = [0 0 3; 0 0 0; 0 0 0]"],["N³ = N² × N","Row 1 (0,0,3) picks out the third row of N, which is zero.\nN³ = zero matrix"]]} a={"N² = [0 0 3; 0 0 0; 0 0 0]\nN³ = zero matrix"} />
+<Problem n={11} q={"For A = [1 0; k 1], find Aⁿ for n ≥ 1."} steps={[["Square it","A² = [1 0; k 1][1 0; k 1] = [1 0; 2k 1]"],["Spot the pattern","Each extra factor adds k to the bottom-left entry"],["Result","Aⁿ = [1 0; nk 1]"]]} a={"[1 0; nk 1]"} />
+<Problem n={12} q={"Find det [2 0 1; 1 3 0; 0 1 1]."} steps={[["Expand along row 1","2(3·1 − 0·1) − 0 + 1(1·1 − 3·0)"],["Simplify","6 + 1 = 7"]]} a={"7"} />
+<Problem n={13} q={"M is 3 × 3 with det M = 6. Find the determinant after swapping two columns, and of MᵀM, 2M and M⁻¹."} steps={[["Swap two columns","The sign flips: −6"],["MᵀM","det Mᵀ · det M = 6 × 6 = 36"],["2M","2³ × 6 = 48"],["M⁻¹","1 / 6"]]} a={"−6, 36, 48, 1/6"} />
+<Problem n={14} q={"Find the matrix projecting onto the line through (1, 2). What is its determinant, and why?"} steps={[["Unit vector","b̂ = (1, 2) / √5"],["Use P = [b₁²  b₁b₂; b₁b₂  b₂²]","P = ⅕ [1 2; 2 4]"],["Determinant","(1·4 − 2·2) / 25 = 0"],["Why","It flattens the plane onto a line, so every area becomes 0."]]} a={"⅕ [1 2; 2 4], det 0: it flattens the plane onto a line."} />
+
+## C. Applied and challenge
+
+<Problem n={15} q={"For which k is [k 2; 8 k] singular?"} steps={[["Set det = 0","k·k − 2·8 = k² − 16 = 0"],["Solve","k = ±4"]]} a={"k = ±4"} />
+<Problem n={16} q={"For which k is [1 0 2; 0 1 −1; 1 1 k] invertible?"} steps={[["Expand along row 1","1(1·k − (−1)·1) − 0 + 2(0·1 − 1·1)\n= k + 1 − 2 = k − 1"],["Invertible when det ≠ 0","k ≠ 1"]]} a={"k ≠ 1"} />
+<Problem n={17} q={"Find the inverse of [1 0 0; 2 1 0; 3 4 1]."} steps={[["Set up (A | I)","[1 0 0 | 1 0 0]\n[2 1 0 | 0 1 0]\n[3 4 1 | 0 0 1]"],["R2 − 2R1 and R3 − 3R1","[0 1 0 | −2 1 0]\n[0 4 1 | −3 0 1]"],["R3 − 4R2","[0 0 1 | 5 −4 1]"],["Read off A⁻¹","[1 0 0; −2 1 0; 5 −4 1]"]]} a={"[1 0 0; −2 1 0; 5 −4 1]"} />
+<Problem n={18} q={"Use an inverse to solve 4x + 7y = 1, x + 2y = 1."} steps={[["Matrix form","[4 7; 1 2](x, y) = (1, 1)"],["Inverse (problem 6)","A⁻¹ = [2 −7; −1 4]"],["Multiply","x = 2 − 7 = −5\ny = −1 + 4 = 3"]]} a={"x = −5, y = 3"} />
+<Problem n={19} q={"Show that det(A⁻¹) = 1 / det A."} steps={[["Start from AA⁻¹ = I","det(AA⁻¹) = det I = 1"],["Use det(AB) = det A · det B","det A · det(A⁻¹) = 1"],["Divide","det(A⁻¹) = 1 / det A"]]} a={"det A · det(A⁻¹) = det(AA⁻¹) = det I = 1"} />
+<Problem n={20} q={"Show that (AB)⁻¹ = B⁻¹A⁻¹."} steps={[["Multiply AB by the candidate","(AB)(B⁻¹A⁻¹)"],["Regroup","= A(BB⁻¹)A⁻¹ = AIA⁻¹ = AA⁻¹ = I"],["Conclude","B⁻¹A⁻¹ undoes AB, so (AB)⁻¹ = B⁻¹A⁻¹"]]} a={"(AB)(B⁻¹A⁻¹) = A(BB⁻¹)A⁻¹ = AA⁻¹ = I"} />
+<Problem n={21} q={"A² = A and A ≠ I. Prove det A = 0."} steps={[["Suppose A has an inverse","Multiply A² = A on the left by A⁻¹"],["Simplify","A⁻¹A² = A⁻¹A  →  A = I"],["Contradiction","But A ≠ I, so A has no inverse and det A = 0"]]} a={"If A had an inverse, multiplying A² = A by it gives A = I. So A is singular."} />

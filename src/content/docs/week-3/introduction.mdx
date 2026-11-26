@@ -1,0 +1,95 @@
+---
+title: "Matrices"
+description: "Multiply matrices, use them to transform shapes, and find determinants and inverses."
+sidebar:
+  label: "Introduction and explanation"
+  order: 1
+---
+import Eq from '../../../components/Eq.astro';
+import LinearMap from '../../../components/LinearMap.astro';
+
+<p class="lead">Multiply matrices, use them to transform shapes, and find determinants and inverses.</p>
+
+## Matrices and basic operations
+
+An **m × n matrix** has m rows and n columns. Entry a<sub>ij</sub> sits in row i, column j.
+
+Matrices are equal when every entry matches. Add or subtract matrices of the **same size** entry by entry. A scalar multiplies every entry. The **transpose** Aᵀ swaps rows and columns.
+
+<Eq>{"A = [ 3  5  0 ]      Aᵀ = [ 3 −1 ]\n    [−1 −1  1 ]           [ 5 −1 ]\n                          [ 0  1 ]"}</Eq>
+
+## Matrix multiplication
+
+AB exists only when the number of **columns of A** equals the number of **rows of B**. Each entry is a row of A dotted with a column of B.
+
+<Eq>{"(m × n)(n × q) → m × q\n(AB)ᵢⱼ = Σ AᵢₖBₖⱼ\n(AB)C = A(BC)        (AB)ᵀ = BᵀAᵀ\nAB ≠ BA in general"}</Eq>
+
+## Special matrices
+
+| Name | Property |
+| --- | --- |
+| Zero | Every entry is 0 |
+| Identity I | 1s on the main diagonal; AI = IA = A |
+| Symmetric | A = Aᵀ |
+| Antisymmetric | A = −Aᵀ |
+| Upper / lower triangular | Zeros below / above the diagonal |
+| Diagonal | Zeros everywhere off the diagonal |
+
+## Linear transformations
+
+Every matrix transforms space: x′ = Ax. The columns of A are where i and j land. Try the presets and sliders.
+
+<Eq>{"rotation (anticlockwise)\n  [cos α  −sin α; sin α  cos α]\nstretch        [λ 0; 0 μ]\nshear          [1 λ; 0 1]\nreflect in y   [−1 0; 0 1]\n(rows separated by ;)"}</Eq>
+
+<LinearMap />
+
+## Combining and projecting
+
+To apply B first and then A, use **AB**: the matrix nearest the vector acts first.
+
+<Eq>{"x′ = A(Bx) = (AB)x\nprojection onto unit vector b̂:  P = [b₁²   b₁b₂]\n                                    [b₁b₂  b₂² ]"}</Eq>
+
+A projection flattens the plane onto a line, so it cannot be undone.
+
+## Determinants
+
+|det A| is the factor by which areas (2D) or volumes (3D) are scaled. A negative sign means orientation is flipped.
+
+<Eq>{"| a b | = ad − bc\n| c d |\n\n| a b c |\n| d e f | = a(ei − fh) − b(di − fg) + c(dh − eg)\n| g h i |"}</Eq>
+
+You may expand along any row or column, using the signs + − + / − + − / + − +. Choose one with many zeros. In 3D, det A is the triple product of its columns.
+
+## Determinant shortcuts
+
+| Change (rows or columns) | Effect |
+| --- | --- |
+| Swap two | Sign flips |
+| Multiply one by k | det × k |
+| Add a multiple of one to another | No change |
+| One is a multiple of another | det = 0 |
+
+<Eq>{"det(AB) = det A · det B     det(Aᵀ) = det A\ndet(kA) = kⁿ det A          det(A⁻¹) = 1 / det A"}</Eq>
+
+## Inverses
+
+A⁻¹ undoes A: AA⁻¹ = A⁻¹A = I. It exists exactly when det A ≠ 0. A matrix with det 0 is **singular**.
+
+<Eq>{"[a b]⁻¹ =     1     [ d −b]\n[c d]      ad − bc  [−c  a]\n\nGauss–Jordan:   (A | I)  →  (I | A⁻¹)\nCofactors:      A⁻¹ = Cᵀ / det A,   cᵢⱼ = (−1)ⁱ⁺ʲ det Sᵢⱼ"}</Eq>
+
+Sᵢⱼ is A with row i and column j removed.
+
+## Link to linear systems
+
+A system can be written Ax = b. If det A ≠ 0 there is exactly one solution, x = A⁻¹b. If det A = 0 there are either none or infinitely many.
+
+For large systems, elimination is used in practice instead of forming the inverse.
+
+## Which tool do I use?
+
+| You want | Use |
+| --- | --- |
+| Can I multiply? | Match the inner sizes |
+| Apply transformations in order | Multiply right to left |
+| Area or volume scale | Determinant |
+| Is it invertible? | Check det ≠ 0 |
+| Inverse by hand | 2 × 2 formula, or (A \| I) elimination |

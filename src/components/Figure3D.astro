@@ -8,7 +8,7 @@ import { render, type FigItem } from '../lib/figure3d';
 interface Props { cap: string; items: FigItem[]; angle?: number }
 const { cap, items, angle = 30 } = Astro.props;
 ---
-<figure class="fig3d not-content" data-items={JSON.stringify(items)}>
+<figure class="fig3d fig-side not-content" data-items={JSON.stringify(items)}>
 	<svg viewBox="0 0 320 260" role="img" aria-label={cap} set:html={render(items, angle)} />
 	<input type="range" min="-60" max="100" value={angle} aria-label="Rotate figure" class="print-hide" />
 	<figcaption>{cap} <span class="print-hide">Drag the slider to rotate.</span></figcaption>

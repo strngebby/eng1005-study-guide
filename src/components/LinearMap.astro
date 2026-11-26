@@ -1,0 +1,52 @@
+---
+/**
+ * Interactive 2D transformation: preset buttons and a, b, c, d sliders for
+ * the matrix [a b; c d]. First frame is drawn at build time.
+ *   <LinearMap />
+ */
+import { PRESETS, renderLin, captionLin, type Mat } from '../lib/linear-map';
+interface Props { start?: Mat }
+const { start = [1, 1, 0, 1] } = Astro.props;
+---
+<figure class="lin fig-side not-content">
+	<svg viewBox="-160 -130 320 260" role="img" aria-label="Unit square and an L shape before and after the matrix" set:html={renderLin(start)} />
+	<div class="row print-hide">
+		{PRESETS.map(([name, m]) => <button class="btn alt pre" type="button" data-m={JSON.stringify(m)}>{name}</button>)}
+	</div>
+	<div class="print-hide">
+		{['a', 'b', 'c', 'd'].map((n, i) => (
+			<label class="label">{n}<input type="range" min="-2" max="2" step="0.1" value={start[i]} /></label>
+		))}
+	</div>
+	<figcaption aria-live="polite">{captionLin(start)}</figcaption>
+</figure>
+
+<script>
+	import { renderLin, captionLin, type Mat } from '../lib/linear-map';
+	document.querySelectorAll<HTMLElement>('figure.lin').forEach((f) => {
+		const svg = f.querySelector('svg')!, cap = f.querySelector('figcaption')!;
+		const sliders = [...f.querySelectorAll<HTMLInputElement>('input[type=range]')];
+		const draw = () => {
+			const m = sliders.map((s) => +s.value) as Mat;
+			svg.innerHTML = renderLin(m);
+			cap.textContent = captionLin(m);
+		};
+		sliders.forEach((s) => s.addEventListener('input', draw));
+		f.querySelectorAll<HTMLButtonElement>('button.pre').forEach((b) =>
+			b.addEventListener('click', () => {
+				(JSON.parse(b.dataset.m!) as Mat).forEach((v, i) => (sliders[i].value = String(v)));
+				draw();
+			}),
+		);
+	});
+</script>
+
+<style>
+	figure { margin: 0; }
+	svg { display: block; width: 100%; height: auto; background: var(--paper); border: 1px solid var(--line); border-radius: 3px; touch-action: pan-y; }
+	.row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 10px; }
+	.pre { padding: 4px 9px; font-size: .8rem; }
+	label { text-transform: none; display: grid; grid-template-columns: 18px 1fr; align-items: center; margin-top: 6px; }
+	input[type='range'] { width: 100%; accent-color: var(--accent); margin: 0; }
+	figcaption { font-size: .8rem; color: var(--dim); margin-top: 5px; }
+</style>

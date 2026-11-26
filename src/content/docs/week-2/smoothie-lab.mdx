@@ -1,0 +1,81 @@
+---
+title: "Challenge: Smoothie Lab"
+description: "Nine linked questions, no calculator. A stall makes blends A, B and C. Per cup, in scoops of (mango, banana, yoghurt): A uses (2, 1, 1), B uses (1, 2, 1) and C uses (1, 1, 2). Let a, b, c be the numbers of cups."
+sidebar:
+  order: 5
+---
+import Exercise from '../../../components/Exercise.astro';
+
+<p class="lead">Nine linked questions, no calculator. A stall makes blends A, B and C. Per cup, in scoops of (mango, banana, yoghurt): A uses (2, 1, 1), B uses (1, 2, 1) and C uses (1, 1, 2). Let a, b, c be the numbers of cups.</p>
+
+## Question 1
+
+<Exercise
+	q={"The stall uses exactly 12 mango, 11 banana and 13 yoghurt scoops. Write the system and its augmented matrix."}
+	hint={"One equation per ingredient."}
+	solution={"[2 1 1 | 12]\n[1 2 1 | 11]\n[1 1 2 | 13]"}
+/>
+
+## Question 2
+
+<Exercise
+	q={"Reduce the matrix to row echelon form."}
+	hint={"Swap rows 1 and 3 so the first pivot is 1."}
+	solution={"Swap R1, R3\nR2 − R1, R3 − 2R1, then R3 + R2:\n[1 1  2 |  13]\n[0 1 −1 |  −2]\n[0 0 −4 | −16]"}
+/>
+
+## Question 3
+
+<Exercise
+	q={"Find how many cups of each blend were made."}
+	hint={"Back substitute."}
+	solution={"c = 4, b = 2, a = 3"}
+/>
+
+## Question 4
+
+<Exercise
+	q={"Blend C is replaced by D, which uses (3, 3, 2). Without row reducing, explain why the rank of the new coefficient matrix is less than 3."}
+	hint={"Compare D with A and B."}
+	solution={"D = A + B, so the third column depends on the first two. A and B are not multiples, so the rank is 2."}
+/>
+
+## Question 5
+
+<Exercise
+	q={"For blends A, B, D and stock (m, n, p), find the condition for the system to be consistent."}
+	hint={"Combine the rows to make a zero row."}
+	solution={"Rows: (2,1,3), (1,2,3), (1,1,2)\nR1 + R2 = 3 × R3\nso consistency needs m + n = 3p"}
+/>
+
+## Question 6
+
+<Exercise
+	q={"Find the full solution space (a, b, d) for stock (12, 12, 8)."}
+	hint={"Check the condition, then choose d = t."}
+	solution={"24 = 3 × 8 ✓\n(a, b, d) = (4, 4, 0) + t(−1, −1, 1)"}
+/>
+
+## Question 7
+
+<Exercise
+	q={"Treat the three equations in question 6 as planes. Describe their intersection and give a direction vector."}
+	hint={"Look at the number of parameters."}
+	solution={"The three planes share one line through (4, 4, 0) with direction (−1, −1, 1)."}
+/>
+
+## Question 8
+
+<Exercise
+	q={"Show that stock (12, 11, 13) has no solution with A, B, D. What does this mean for the three planes?"}
+	hint={"Use your condition."}
+	solution={"12 + 11 = 23, but 3 × 13 = 39. Inconsistent.\nNo two normals are parallel, so the planes meet in pairs, with no point on all three."}
+/>
+
+## Question 9
+
+<Exercise
+	q={"Now the third blend E uses (1, 1, k). For which k is there NOT a unique solution? At that k, which of the two stocks above can be made, ignoring whether cup numbers are whole or positive?"}
+	hint={"Find when E is a combination of A and B."}
+	solution={"E = α(2,1,1) + β(1,2,1) needs α = β = 1/3, so k = 2/3.\nCondition is still m + n = 3p:\n(12, 12, 8) works, (12, 11, 13) does not."}
+/>

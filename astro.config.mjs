@@ -11,6 +11,8 @@ import cardsPlugin from './src/lib/cards-plugin.mjs';
  */
 const weeks = [
 	{ n: 1, topic: 'Vectors, lines and planes' },
+	{ n: 2, topic: 'Systems of linear equations' },
+	{ n: 3, topic: 'Matrices' },
 ];
 
 // GitHub Pages address: https://strngebby.github.io/eng1005-study-guide/
@@ -22,7 +24,7 @@ export default defineConfig({
 	base: BASE,
 	// A week's folder address (e.g. /week-1/) opens that week's first page.
 	redirects: Object.fromEntries(weeks.map((w) => [`/week-${w.n}`, `${BASE}/week-${w.n}/introduction/`])),
-	markdown: { processor: satteri({ hastPlugins: [cardsPlugin()] }) },
+	markdown: { processor: satteri({ hastPlugins: [cardsPlugin()], features: { smartPunctuation: false } }) },
 	integrations: [
 		starlight({
 			title: 'ENG1005 Study Guide',

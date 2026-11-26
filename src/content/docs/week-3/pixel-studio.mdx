@@ -1,0 +1,81 @@
+---
+title: "Challenge: Pixel Studio"
+description: "Nine linked questions, no calculator. An editor transforms a triangle with corners (0, 0), (2, 0) and (0, 1). Matrices are written row by row: S = [2 0; 0 3], R = [0 −1; 1 0], H = [1 1; 0 1]."
+sidebar:
+  order: 5
+---
+import Exercise from '../../../components/Exercise.astro';
+
+<p class="lead">Nine linked questions, no calculator. An editor transforms a triangle with corners (0, 0), (2, 0) and (0, 1). Matrices are written row by row: S = [2 0; 0 3], R = [0 −1; 1 0], H = [1 1; 0 1].</p>
+
+## Question 1
+
+<Exercise
+	q={"Find the images of the three corners under S."}
+	hint={"Multiply S by each corner."}
+	solution={"(0, 0), (4, 0), (0, 3)"}
+/>
+
+## Question 2
+
+<Exercise
+	q={"Compare the areas before and after. How does this relate to det S?"}
+	hint={"Both triangles are right-angled."}
+	solution={"Before 1, after 6\ndet S = 6, the area scale factor"}
+/>
+
+## Question 3
+
+<Exercise
+	q={"The editor applies S, then R. Find the single matrix M."}
+	hint={"The first action is on the right."}
+	solution={"M = RS = [0 −3; 2 0]"}
+/>
+
+## Question 4
+
+<Exercise
+	q={"Find the matrix for R first, then S. Does order matter here?"}
+	hint={"Compute SR."}
+	solution={"SR = [0 −2; 3 0] ≠ M, so order matters."}
+/>
+
+## Question 5
+
+<Exercise
+	q={"Find M⁻¹, the undo button."}
+	hint={"Use the 2 × 2 formula."}
+	solution={"det M = 6\nM⁻¹ = [0 1/2; −1/3 0]"}
+/>
+
+## Question 6
+
+<Exercise
+	q={"A shear H is added after M. Find the new matrix and explain what happens to the area scale."}
+	hint={"Compute HM, then use det(HM) = det H det M."}
+	solution={"HM = [2 −3; 2 0]\ndet = 1 × 6 = 6, unchanged by the shear"}
+/>
+
+## Question 7
+
+<Exercise
+	q={"After HM, a pixel is at (−4, 2). Where was it originally?"}
+	hint={"Solve the two equations."}
+	solution={"2x − 3y = −4,  2x = 2\n(x, y) = (1, 2)"}
+/>
+
+## Question 8
+
+<Exercise
+	q={"A filter K = [2 4; 1 k] is applied to the whole plane. For which k can it not be undone? Where do all points land then?"}
+	hint={"Set det K = 0."}
+	solution={"2k − 4 = 0 → k = 2\nOutputs are (2u, u): the line x = 2y"}
+/>
+
+## Question 9
+
+<Exercise
+	q={"A custom tool Q sends (2, 1) to (5, 4) and (1, 1) to (3, 3). Find Q and the area of the transformed original triangle."}
+	hint={"Subtract the two inputs to get Q(1, 0)."}
+	solution={"Q(1, 0) = (2, 1),  Q(0, 1) = (1, 2)\nQ = [2 1; 1 2],  det 3\narea = 1 × 3 = 3"}
+/>

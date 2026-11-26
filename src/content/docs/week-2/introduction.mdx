@@ -1,0 +1,100 @@
+---
+title: "Systems of linear equations"
+description: "Solve several equations at once, and tell whether there is no solution, one, or infinitely many."
+sidebar:
+  label: "Introduction and explanation"
+  order: 1
+---
+import Eq from '../../../components/Eq.astro';
+import Callout from '../../../components/Callout.astro';
+import Figure3D from '../../../components/Figure3D.astro';
+import { FIG } from '../../../data/week-2/figures';
+
+<p class="lead">Solve several equations at once, and tell whether there is no solution, one, or infinitely many.</p>
+
+## Linear systems
+
+A **linear equation** has each unknown to the first power, with no unknowns multiplied together. A system of m equations in n unknowns asks for values satisfying **all** of them.
+
+A system with at least one solution is **consistent**. Otherwise it is **inconsistent**. The set of all solutions is the **solution space**.
+
+<Eq>{"2x + y = 8\n x − y = 1     →  x = 3, y = 2"}</Eq>
+
+<Figure3D {...FIG.one2} />
+
+## Only three outcomes: lines in 2D
+
+| Picture | Algebra | Solutions |
+| --- | --- | --- |
+| Lines cross once | A value for each unknown | One |
+| Parallel, separate | A false line such as 0 = 1 | None |
+| Same line | A line 0 = 0 and a free variable | Infinitely many |
+
+<Figure3D {...FIG.none2} />
+
+## Planes in 3D
+
+Each equation in x, y, z is a plane. A solution is a point lying on every plane. Three planes can meet at one point, as shown.
+
+<Figure3D {...FIG.point3} />
+
+## Planes sharing a line
+
+If all the planes contain one line, every point on it is a solution, so there are infinitely many, described by one parameter.
+
+<Figure3D {...FIG.line3} />
+
+## No common point
+
+Parallel planes never meet. Planes can also meet in pairs without any point shared by all three.
+
+<Figure3D {...FIG.none3} />
+
+## Augmented matrix and row operations
+
+Keep only the numbers. The part left of the bar is the **coefficient matrix** A. Adding the right-hand side b gives the **augmented matrix** (A|b).
+
+<Eq>{"2x + 3y = 5        [  2  3 | 5 ]\n−2x + y = 3        [ −2  1 | 3 ]"}</Eq>
+
+Three row operations keep the same solutions:
+
+- Swap two rows.
+- Multiply a row by a **non-zero** number.
+- Add a multiple of one row to another.
+
+## Gaussian elimination and echelon form
+
+Working from the top row down, use each row to clear the entries below its leading entry. In **row echelon form**, each row's first non-zero entry (its **pivot**) lies to the right of the pivot above, and zero rows are at the bottom. Then use **back substitution** from the last row upwards.
+
+<Eq>{"[ 1  1  1 | 6 ]\n[ 0  2  1 | 7 ]\n[ 0  0  3 | 9 ]     z = 3, y = 2, x = 1"}</Eq>
+
+Row echelon form is **not** unique.
+
+## Reduced row echelon form
+
+Also make every pivot 1 and clear the entries **above** each pivot. This is Gauss–Jordan elimination. The reduced form of a matrix is unique, and solutions can be read straight from it.
+
+<Eq>{"[ 1  0  2 |  5 ]     x = 5 − 2s\n[ 0  1  5 |  0 ]     y = −5s\n[ 0  0  0 |  0 ]     z = s"}</Eq>
+
+## Pivots, free variables and rank
+
+An unknown whose column has a pivot is a **basic variable**. One without is a **free variable**: give it a parameter. The **rank** is the number of pivots in echelon form.
+
+<Eq>{"rank(A) < rank(A|b)       no solutions\nrank(A) = rank(A|b) = n   one solution\nrank(A) = rank(A|b) < n   infinitely many\nnumber of parameters = n − rank(A)     (consistent system)\nn = number of unknowns"}</Eq>
+
+## Overdetermined and underdetermined
+
+**Overdetermined** means more equations than unknowns. It often has no solution, but can have one or infinitely many.
+
+**Underdetermined** means fewer equations than unknowns. It can never have exactly one solution: there are at most as many pivots as equations, so a free variable remains. It has either none or infinitely many.
+
+<Callout label="Complex numbers">{"The same methods work when coefficients are complex. To divide, multiply top and bottom by the conjugate."}</Callout>
+
+## Which tool do I use?
+
+| You want | Use |
+| --- | --- |
+| Solve a system | Row reduce, then back substitute |
+| Read solutions directly | Reduced row echelon form |
+| Count solutions | Compare rank(A), rank(A\|b) and n |
+| Unknown constant in the system | Reduce, then split into cases at the last pivot |
