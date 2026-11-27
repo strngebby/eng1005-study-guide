@@ -13,6 +13,10 @@ const weeks = [
 	{ n: 1, topic: 'Vectors, lines and planes' },
 	{ n: 2, topic: 'Systems of linear equations' },
 	{ n: 3, topic: 'Matrices' },
+	{ n: 4, topic: 'Eigenvalues and eigenvectors' },
+	{ n: 5, topic: 'Multivariable calculus I' },
+	{ n: 6, topic: 'Multivariable calculus II' },
+	{ n: 7, topic: 'Integration techniques and hyperbolic functions' },
 ];
 
 // GitHub Pages address: https://strngebby.github.io/eng1005-study-guide/

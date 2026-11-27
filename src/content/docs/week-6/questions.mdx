@@ -1,0 +1,24 @@
+---
+title: "Questions"
+description: "Instant checking. Numerical answers can be typed as a number."
+tableOfContents: false
+sidebar:
+  order: 3
+---
+import Quiz from '../../../components/Quiz.astro';
+
+<p class="lead">Instant checking. Numerical answers can be typed as a number.</p>
+
+{/* [prompt, options | null, answer (index or number), hint, explanation] */}
+<Quiz questions={[
+	["f = x² − 6x + y². What is the x-coordinate of its critical point?",null,3,"Set fx = 0.","2x − 6 = 0."],
+	["What is the value of f there?",null,-9,"The point is (3, 0).","9 − 18 = −9."],
+	["At a critical point det H = −5. It is a:",["maximum","minimum","saddle","test fails"],2,"Check the sign of det H.","Negative means saddle."],
+	["det H > 0 and fxx < 0 gives a:",["local maximum","local minimum","saddle","corner"],0,"The surface curves downwards.","It is a maximum."],
+	["If det H = 0:",["it is a saddle","it is a minimum","the test is inconclusive","there is no critical point"],2,"The test needs a non-zero determinant.","Examine f another way."],
+	["What is det H for x² + 4xy + y²?",null,-12,"fxx = 2, fxy = 4, fyy = 2.","4 − 16 = −12."],
+	["How many critical points does x³ − 3x + y² have?",null,2,"Solve 3x² = 3 and 2y = 0.","(±1, 0)."],
+	["The Lagrange condition is:",["∇f = 0","∇f = λ∇g","f = λg","∇f · ∇g = 0"],1,"The gradients are parallel.","∇f = λ∇g."],
+	["(2 cos t, 2 sin t, t) traces a:",["circle","helix","line","ellipse"],1,"x and y go round while z rises.","It is a helix."],
+	["r(t) = (t², t³). What is the second component of the tangent at t = 1?",null,3,"Differentiate t³.","3t² = 3."],
+]} />

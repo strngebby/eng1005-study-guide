@@ -1,0 +1,24 @@
+---
+title: "Questions"
+description: "Instant checking. Numerical answers can be typed as a number."
+tableOfContents: false
+sidebar:
+  order: 3
+---
+import Quiz from '../../../components/Quiz.astro';
+
+<p class="lead">Instant checking. Numerical answers can be typed as a number.</p>
+
+{/* [prompt, options | null, answer (index or number), hint, explanation] */}
+<Quiz questions={[
+	["∫₀¹ 2x(x² + 1) dx = ?",null,1.5,"Use u = x² + 1.","∫₁² u du = 1.5."],
+	["∫ from 0 to π/2 of sin x cos x dx = ?",null,0.5,"Use u = sin x.","1/2."],
+	["For ∫ x cos x dx by parts, which should be differentiated?",["x","cos x","x cos x","neither"],0,"Which gets simpler?","x differentiates to 1."],
+	["∫₀¹ x eˣ dx = ?",null,1,"Antiderivative (x − 1)eˣ.","0 − (−1) = 1."],
+	["cosh 0 = ?",null,1,"Average of e⁰ and e⁰.","1."],
+	["cosh² x − sinh² x equals:",["0","1","−1","cosh 2x"],1,"The basic identity.","It equals 1."],
+	["The derivative of tanh x is:",["−sech² x","sech² x","coth x","cosech² x"],1,"Compare with tan x.","sech² x."],
+	["sinh(ln 2) = ?",null,0.75,"e raised to ln 2 is 2.","(2 − 1/2)/2 = 0.75."],
+	["Which function is even?",["sinh x","cosh x","tanh x","cosech x"],1,"f(−x) = f(x).","cosh x."],
+	["∫₁ᵉ (ln x)/x dx = ?",null,0.5,"Use u = ln x.","∫₀¹ u du = 1/2."],
+]} />

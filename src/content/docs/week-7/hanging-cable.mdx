@@ -1,0 +1,81 @@
+---
+title: "Challenge: Hanging Cable"
+description: "Nine linked questions, no calculator. A cable between two poles has height y = 8 cosh(x/8) for −8 ln 2 ≤ x ≤ 8 ln 2."
+sidebar:
+  order: 5
+---
+import Exercise from '../../../components/Exercise.astro';
+
+<p class="lead">Nine linked questions, no calculator. A cable between two poles has height y = 8 cosh(x/8) for −8 ln 2 ≤ x ≤ 8 ln 2.</p>
+
+## Question 1
+
+<Exercise
+	q={"How high is the lowest point?"}
+	hint={"cosh is smallest at 0."}
+	solution={"y = 8 at x = 0"}
+/>
+
+## Question 2
+
+<Exercise
+	q={"How high are the ends, and how far does the cable sag?"}
+	hint={"Find cosh(ln 2)."}
+	solution={"cosh(ln 2) = 5/4\nends 10, sag 2"}
+/>
+
+## Question 3
+
+<Exercise
+	q={"Find the slope at the right-hand end."}
+	hint={"Differentiate."}
+	solution={"y′ = sinh(x/8) = sinh(ln 2) = 3/4"}
+/>
+
+## Question 4
+
+<Exercise
+	q={"θ is the angle between the cable and the horizontal at that end. Find sin θ and cos θ."}
+	hint={"Draw a 3, 4, 5 triangle."}
+	solution={"sin θ = 3/5,  cos θ = 4/5"}
+/>
+
+## Question 5
+
+<Exercise
+	q={"Show that √(1 + y′²) = cosh(x/8)."}
+	hint={"Use the basic identity."}
+	solution={"1 + sinh² = cosh², and cosh > 0"}
+/>
+
+## Question 6
+
+<Exercise
+	q={"The length is the integral of that expression across the span. Find it."}
+	hint={"Integrate cosh(x/8)."}
+	solution={"[8 sinh(x/8)] = 16 × 3/4 = 12"}
+/>
+
+## Question 7
+
+<Exercise
+	q={"Find the area between the cable and the ground y = 0."}
+	hint={"Integrate y."}
+	solution={"[64 sinh(x/8)] = 128 × 3/4 = 96"}
+/>
+
+## Question 8
+
+<Exercise
+	q={"At which points is the cable 26/3 high?"}
+	hint={"Solve cosh u = 13/12."}
+	solution={"u = ±ln(13/12 + 5/12) = ±ln(3/2)\nx = ±8 ln(3/2)"}
+/>
+
+## Question 9
+
+<Exercise
+	q={"Evaluate ∫ x sinh(x/8) dx from 0 to 8 ln 2."}
+	hint={"Use parts with f = x."}
+	solution={"[8x cosh(x/8) − 64 sinh(x/8)]\n= 80 ln 2 − 48"}
+/>

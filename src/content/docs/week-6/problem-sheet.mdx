@@ -1,0 +1,42 @@
+---
+title: "Problem sheet"
+description: "21 mixed problems, easy to hard. Write full working, then open the answer."
+sidebar:
+  order: 4
+---
+import Problem from '../../../components/Problem.astro';
+import PrintButton from '../../../components/PrintButton.astro';
+
+<p class="lead">21 mixed problems, easy to hard. Write full working, then open the answer.</p>
+
+<PrintButton label="Print problem sheet" />
+
+## A. Warm-up
+
+<Problem n={1} q={"Find and classify the critical point of x² + y² + 4x − 2y."} steps={[["Critical point","fx = 2x + 4 = 0,  fy = 2y − 2 = 0  →  (−2, 1)"],["Hessian","H = [2 0; 0 2],  det = 4 > 0,  fxx > 0"],["Type","Minimum"]]} a={"(−2, 1), minimum"} />
+<Problem n={2} q={"Find and classify the critical point of xy − x."} steps={[["Critical point","fx = y − 1 = 0,  fy = x = 0  →  (0, 1)"],["Hessian","H = [0 1; 1 0],  det = −1 < 0"],["Type","Saddle"]]} a={"(0, 1), saddle"} />
+<Problem n={3} q={"Classify the origin for −x² − 3y²."} steps={[["Critical point","fx = −2x,  fy = −6y  →  (0, 0)"],["Hessian","H = [−2 0; 0 −6],  det = 12 > 0,  fxx < 0"],["Type","Maximum"]]} a={"Maximum"} />
+<Problem n={4} q={"Identify the curve (3 cos t, 5 sin t)."} steps={[["Isolate cos t and sin t","cos t = x/3,  sin t = y/5"],["Use cos² t + sin² t = 1","x²/9 + y²/25 = 1, an ellipse"]]} a={"Ellipse x²/9 + y²/25 = 1"} />
+<Problem n={5} q={"Find the tangent to (t, e²ᵗ, 1/t) at t = 1."} steps={[["Differentiate","r′(t) = (1, 2e²ᵗ, −1/t²)"],["Evaluate at t = 1","(1, 2e², −1)"]]} a={"(1, 2e², −1)"} />
+<Problem n={6} q={"Parameterise the segment from (1, 0, 2) to (3, 4, 1)."} steps={[["Direction","(3, 4, 1) − (1, 0, 2) = (2, 4, −1)"],["Start at the first point","(1, 0, 2) + t(2, 4, −1) = (1 + 2t, 4t, 2 − t),  0 ≤ t ≤ 1"]]} a={"(1 + 2t, 4t, 2 − t),  0 ≤ t ≤ 1"} />
+
+## B. Core skills
+
+<Problem n={7} q={"Find and classify the critical point of 2x² + y² − xy − 7x."} steps={[["Critical point","fx = 4x − y − 7 = 0\nfy = 2y − x = 0  →  x = 2y\n8y − y = 7  →  y = 1, x = 2"],["Hessian","H = [4 −1; −1 2],  det = 7 > 0,  fxx > 0: minimum"],["Value","f(2, 1) = 8 + 1 − 2 − 14 = −7"]]} a={"(2, 1), minimum, f = −7"} />
+<Problem n={8} q={"Classify the critical points of x³ − 12x + y² − 4y."} steps={[["Critical points","fx = 3x² − 12 = 0  →  x = ±2\nfy = 2y − 4 = 0  →  y = 2"],["Hessian","H = [6x 0; 0 2]"],["(2, 2)","det = 24 > 0, fxx > 0: minimum\nf = 8 − 24 + 4 − 8 = −20"],["(−2, 2)","det = −24 < 0: saddle"]]} a={"(2, 2) minimum −20\n(−2, 2) saddle"} />
+<Problem n={9} q={"Classify the critical points of y(x² − 4) + y²."} steps={[["Expand and differentiate","f = x²y − 4y + y²\nfx = 2xy,  fy = x² − 4 + 2y"],["Case x = 0","fy = 0  →  y = 2: (0, 2)"],["Case y = 0","x² = 4: (2, 0) and (−2, 0)"],["Hessian","H = [2y 2x; 2x 2]"],["Classify","(0, 2): [4 0; 0 2], det 8 > 0, fxx > 0: minimum\n(±2, 0): det = −16 < 0: saddles"]]} a={"(0, 2) minimum\n(2, 0) and (−2, 0) saddles"} />
+<Problem n={10} q={"Minimise x² + y² subject to 3x + 4y = 25."} steps={[["Lagrange condition","(2x, 2y) = λ(3, 4)  →  y = 4x/3"],["Constraint","3x + 16x/3 = 25  →  25x/3 = 25  →  x = 3, y = 4"],["Value","9 + 16 = 25"]]} a={"25 at (3, 4)"} />
+<Problem n={11} q={"Find the extremes of x + y on x² + y² = 8."} steps={[["Lagrange condition","(1, 1) = λ(2x, 2y)  →  x = y"],["Constraint","2x² = 8  →  x = ±2"],["Values","(2, 2): 4\n(−2, −2): −4"]]} a={"4 at (2, 2), −4 at (−2, −2)"} />
+<Problem n={12} q={"Find the absolute extremes of xy − x on 0 ≤ x ≤ 2, 0 ≤ y ≤ 3."} steps={[["Inside","fx = y − 1, fy = x  →  (0, 1), which is on the edge x = 0 where f = 0"],["Edges","x = 0: f = 0\nx = 2: f = 2y − 2, from −2 to 4\ny = 0: f = −x, from 0 to −2\ny = 3: f = 2x, from 0 to 4"],["Compare","maximum 4 at (2, 3)\nminimum −2 at (2, 0)"]]} a={"maximum 4 at (2, 3)\nminimum −2 at (2, 0)"} />
+<Problem n={13} q={"Parameterise where x² + y² = 4 meets z = x + y."} steps={[["Circle in the xy-plane","x = 2 cos t,  y = 2 sin t"],["Height from the plane","z = x + y = 2 cos t + 2 sin t"],["Result","(2 cos t, 2 sin t, 2 cos t + 2 sin t),  0 ≤ t < 2π"]]} a={"(2 cos t, 2 sin t, 2 cos t + 2 sin t)"} />
+<Problem n={14} q={"Parameterise x²/4 + y² + z²/9 = 1."} steps={[["Match the standard ellipsoid","a = 2,  b = 1,  c = 3"],["Substitute","(2 cos s cos t, cos s sin t, 3 sin s)"],["Check","x²/4 + y² + z²/9 = cos² s (cos² t + sin² t) + sin² s = 1 ✓"]]} a={"(2 cos s cos t, cos s sin t, 3 sin s)\n−π/2 ≤ s ≤ π/2,  0 ≤ t < 2π"} />
+<Problem n={15} q={"Find the tangent line to (cos t, sin t, 2t) at t = π."} steps={[["Point at t = π","(cos π, sin π, 2π) = (−1, 0, 2π)"],["Tangent","r′(t) = (−sin t, cos t, 2)  →  (0, −1, 2)"],["Line","(−1, 0, 2π) + u(0, −1, 2)"]]} a={"(−1, 0, 2π) + u(0, −1, 2)"} />
+
+## C. Applied and challenge
+
+<Problem n={16} q={"Use a multiplier to find the point of x + 2y + 2z = 18 nearest the origin."} steps={[["Minimise x² + y² + z² with the constraint","(2x, 2y, 2z) = λ(1, 2, 2)  →  y = 2x,  z = 2x"],["Constraint","x + 4x + 4x = 18  →  x = 2"],["Point and distance","(2, 4, 4),  √(4 + 16 + 16) = 6"]]} a={"(2, 4, 4), distance 6"} />
+<Problem n={17} q={"Positive x, y, z add to 12. Maximise xyz."} steps={[["Lagrange condition","(yz, xz, xy) = λ(1, 1, 1)"],["Compare","yz = xz  →  x = y  (z > 0)\nxz = xy  →  y = z  (x > 0)"],["Constraint","3x = 12  →  x = y = z = 4, product 64"]]} a={"x = y = z = 4, product 64"} />
+<Problem n={18} q={"Find the largest rectangle, sides parallel to the axes, inside x²/8 + y²/2 = 1."} steps={[["Area with corner (x, y)","A = 4xy,  constraint x²/8 + y²/2 = 1"],["Lagrange condition","4y = λx/4  and  4x = λy\nDivide: y/x = x/(4y)  →  x² = 4y²  →  x = 2y"],["Constraint","4y²/8 + y²/2 = 1  →  y² = 1  →  y = 1, x = 2"],["Area","4 × 2 × 1 = 8"]]} a={"Corner (2, 1), area 8"} />
+<Problem n={19} q={"Classify the origin for x⁴ + y⁴."} steps={[["Hessian at the origin","fxx = 12x² = 0,  fyy = 12y² = 0,  fxy = 0  →  det H = 0"],["The test fails, so look at f","f(0, 0) = 0, and x⁴ + y⁴ > 0 everywhere else"],["Conclude","Minimum"]]} a={"det H = 0, but f > 0 elsewhere: minimum"} />
+<Problem n={20} q={"Classify the origin for x² + kxy + y²."} steps={[["Hessian","H = [2 k; k 2],  det = 4 − k²"],["Cases","|k| < 2: det > 0, fxx > 0: minimum\n|k| > 2: det < 0: saddle"],["k = ±2","det = 0. f = x² ± 2xy + y² = (x ± y)² ≥ 0\nzero along a whole line: a line of minima"]]} a={"|k| < 2 minimum, |k| > 2 saddle\nk = ±2: a line of minima, (x ± y)²"} />
+<Problem n={21} q={"Show (t cos t, t sin t, t) lies on the cone z² = x² + y²."} steps={[["Square x and y","x² + y² = t² cos² t + t² sin² t"],["Simplify","= t²(cos² t + sin² t) = t² = z²"]]} a={"x² + y² = t²(cos² t + sin² t) = t² = z²"} />

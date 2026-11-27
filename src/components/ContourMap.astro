@@ -1,0 +1,29 @@
+---
+/**
+ * Contour map with a movable point and its gradient.
+ *   <ContourMap set="ct5" />   functions are defined in src/lib/plots.ts (CONTOUR_SETS)
+ */
+import { drawContour, CONTOUR_SETS } from '../lib/plots';
+import './FigureControls.css';
+interface Props { set: string; fn?: number }
+const { set, fn = set === 'ct6' ? 3 : 0 } = Astro.props;
+const first = drawContour(set, fn, 1, 0.5);
+---
+<figure class="ct fig2d fig-side not-content" data-set={set} data-fn={fn}>
+	<svg viewBox="-160 -130 320 260" role="img" aria-label="Contour map with a movable point and its gradient" set:html={first.svg} />
+	<div class="row print-hide">{CONTOUR_SETS[set].map(([n], i) => <button class="btn alt pre" type="button" data-i={i}>{n}</button>)}</div>
+	<div class="print-hide">
+		<label class="label">x<input type="range" data-c="x" aria-label="Point x" min="-2.5" max="2.5" step="0.25" value="1" /></label>
+		<label class="label">y<input type="range" data-c="y" aria-label="Point y" min="-2" max="2" step="0.25" value="0.5" /></label>
+	</div>
+	<figcaption aria-live="polite">{first.cap}</figcaption>
+</figure>
+<script>
+	import { drawContour } from '../lib/plots';
+	document.querySelectorAll<HTMLElement>('figure.ct').forEach((f) => {
+		const x = f.querySelector<HTMLInputElement>('[data-c="x"]')!, y = f.querySelector<HTMLInputElement>('[data-c="y"]')!;
+		const draw = () => { const r = drawContour(f.dataset.set!, +f.dataset.fn!, +x.value, +y.value); f.querySelector('svg')!.innerHTML = r.svg; f.querySelector('figcaption')!.textContent = r.cap; };
+		[x, y].forEach((s) => s.addEventListener('input', draw));
+		f.querySelectorAll<HTMLButtonElement>('button.pre').forEach((b) => b.addEventListener('click', () => { f.dataset.fn = b.dataset.i; draw(); }));
+	});
+</script>

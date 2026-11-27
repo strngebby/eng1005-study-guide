@@ -1,0 +1,81 @@
+---
+title: "Challenge: Bike Share"
+description: "Nine linked questions, no calculator. A campus has bikes at stations A and B. Each night 80% of the bikes at A stay and 20% move to B; 70% of the bikes at B stay and 30% move to A. So xₙ₊₁ = M xₙ with M = [0.8 0.3; 0.2 0.7]. On night 0 there are 20 bikes at A and 80 at B."
+sidebar:
+  order: 5
+---
+import Exercise from '../../../components/Exercise.astro';
+
+<p class="lead">Nine linked questions, no calculator. A campus has bikes at stations A and B. Each night 80% of the bikes at A stay and 20% move to B; 70% of the bikes at B stay and 30% move to A. So xₙ₊₁ = M xₙ with M = [0.8 0.3; 0.2 0.7]. On night 0 there are 20 bikes at A and 80 at B.</p>
+
+## Question 1
+
+<Exercise
+	q={"Find the numbers at each station after one night."}
+	hint={"Compute Mx₀."}
+	solution={"x₁ = (16 + 24, 4 + 56) = (40, 60)"}
+/>
+
+## Question 2
+
+<Exercise
+	q={"Find x₂. What stays the same every night, and why can you tell from M?"}
+	hint={"Add the entries in each column of M."}
+	solution={"x₂ = (50, 50)\nTotal stays 100: each column of M sums to 1"}
+/>
+
+## Question 3
+
+<Exercise
+	q={"Find the eigenvalues of M."}
+	hint={"Use the trace and determinant."}
+	solution={"λ² − 1.5λ + 0.5 = 0\nλ = 1 and 1/2"}
+/>
+
+## Question 4
+
+<Exercise
+	q={"Find an eigenvector for each eigenvalue."}
+	hint={"Solve (M − λI)v = 0."}
+	solution={"λ = 1: (3, 2)\nλ = 1/2: (1, −1)"}
+/>
+
+## Question 5
+
+<Exercise
+	q={"Write x₀ as a combination a(3, 2) + b(1, −1)."}
+	hint={"Two equations in a and b."}
+	solution={"3a + b = 20,  2a − b = 80\na = 20, b = −40"}
+/>
+
+## Question 6
+
+<Exercise
+	q={"Hence find a formula for the number of bikes at each station after n nights."}
+	hint={"Each eigenvector is simply multiplied by λⁿ."}
+	solution={"xₙ = 20(3, 2) − 40(1/2)ⁿ(1, −1)\nA: 60 − 40/2ⁿ\nB: 40 + 40/2ⁿ"}
+/>
+
+## Question 7
+
+<Exercise
+	q={"What happens in the long run? Would a different starting split of the 100 bikes change it?"}
+	hint={"Let n become large."}
+	solution={"(60, 40)\nNo: the total fixes a = 20 because only (3, 2) survives"}
+/>
+
+## Question 8
+
+<Exercise
+	q={"On which night does station A first have more than 59 bikes?"}
+	hint={"Solve 40/2ⁿ < 1."}
+	solution={"2ⁿ > 40, so n = 6"}
+/>
+
+## Question 9
+
+<Exercise
+	q={"Find Mⁿ using diagonalisation, and its limit."}
+	hint={"V = [3 1; 2 −1]. Let h = (1/2)ⁿ."}
+	solution={"V⁻¹ = (1/5)[1 1; 2 −3]\nMⁿ = (1/5)[3 + 2h  3 − 3h; 2 − 2h  2 + 3h]\nlimit = (1/5)[3 3; 2 2]"}
+/>

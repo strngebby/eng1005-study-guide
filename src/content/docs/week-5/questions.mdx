@@ -1,0 +1,24 @@
+---
+title: "Questions"
+description: "Instant checking. Numerical answers can be typed as a number."
+tableOfContents: false
+sidebar:
+  order: 3
+---
+import Quiz from '../../../components/Quiz.astro';
+
+<p class="lead">Instant checking. Numerical answers can be typed as a number.</p>
+
+{/* [prompt, options | null, answer (index or number), hint, explanation] */}
+<Quiz questions={[
+	["f = x²y³. What is fx at (1, 2)?",null,16,"y is a constant.","2xy³ = 16."],
+	["f = x²y³. What is fy at (1, 2)?",null,12,"x is a constant.","3x²y² = 12."],
+	["The contours of x² + y² − 3 are:",["circles","straight lines","hyperbolas","parabolas"],0,"Set it equal to C.","x² + y² = C + 3."],
+	["The contours of 2x − y are:",["circles","parallel lines","ellipses","parabolas"],1,"Solve 2x − y = C for y.","y = 2x − C."],
+	["f = 3x + 2y². What is |∇f| at (2, 1)?",null,5,"∇f = (3, 4y).","|(3, 4)| = 5."],
+	["For the same f and point, what is the slope in the direction (1, 0)?",null,3,"Dot (1, 0) with the gradient.","It is fx = 3."],
+	["At any point, ∇f is:",["tangent to the contour","perpendicular to the contour","pointing downhill","always zero"],1,"There is no change along a contour.","û · ∇f = 0 along the contour."],
+	["∇f = (2, −2). In which direction is the rate of change zero?",["(1, −1)","(1, 1)","(1, 0)","(0, 1)"],1,"Find a perpendicular vector.","(1, 1) · (2, −2) = 0."],
+	["f = x³y². What is fxy at (1, 1)?",null,6,"Differentiate in x, then y.","fx = 3x²y², fxy = 6x²y."],
+	["Using the tangent plane of x² + y² at (1, 2), estimate z at (2, 2).",null,7,"z = 5 + 2(x − 1) + 4(y − 2).","5 + 2 = 7."],
+]} />

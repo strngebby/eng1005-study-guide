@@ -1,0 +1,42 @@
+---
+title: "Problem sheet"
+description: "21 mixed problems, easy to hard. Write full working, then open the answer."
+sidebar:
+  order: 4
+---
+import Problem from '../../../components/Problem.astro';
+import PrintButton from '../../../components/PrintButton.astro';
+
+<p class="lead">21 mixed problems, easy to hard. Write full working, then open the answer.</p>
+
+<PrintButton label="Print problem sheet" />
+
+## A. Warm-up
+
+<Problem n={1} q={"Find fx and fy for f = 4x²y − 3y + 7."} steps={[["Treat y as constant","fx = 8xy"],["Treat x as constant","fy = 4x² − 3"]]} a={"fx = 8xy\nfy = 4x² − 3"} />
+<Problem n={2} q={"Find fx and fy for f = ln(x² + 3y)."} steps={[["Chain rule in x","fx = 2x / (x² + 3y)"],["Chain rule in y","fy = 3 / (x² + 3y)"]]} a={"fx = 2x/(x² + 3y)\nfy = 3/(x² + 3y)"} />
+<Problem n={3} q={"Describe the contours xy = 1 and xy = −1."} steps={[["Solve for y","xy = 1  →  y = 1/x\nxy = −1  →  y = −1/x"],["Signs","xy = 1: same signs, quadrants 1 and 3\nxy = −1: opposite signs, quadrants 2 and 4"]]} a={"Hyperbolas: in quadrants 1 and 3, and in 2 and 4"} />
+<Problem n={4} q={"Find ∇f at (2, 1) for f = x² − 3xy."} steps={[["Partial derivatives","fx = 2x − 3y,  fy = −3x"],["Evaluate at (2, 1)","(4 − 3, −6) = (1, −6)"]]} a={"(1, −6)"} />
+<Problem n={5} q={"Find fx and fy for f = y e²ˣ."} steps={[["Treat y as constant","fx = y · 2e²ˣ = 2y e²ˣ"],["Treat x as constant","fy = e²ˣ"]]} a={"fx = 2y e²ˣ\nfy = e²ˣ"} />
+<Problem n={6} q={"What is the radius of the contour f = 1 of f = 10 − x² − y²?"} steps={[["Set f = 1","10 − x² − y² = 1  →  x² + y² = 9"],["Radius","√9 = 3"]]} a={"3"} />
+
+## B. Core skills
+
+<Problem n={7} q={"f = x² − xy + 2y². Find the slope at (1, 2) towards (4, 6)."} steps={[["Gradient","∇f = (2x − y, −x + 4y)  →  (0, 7) at (1, 2)"],["Direction towards (4, 6)","(4, 6) − (1, 2) = (3, 4),  û = (3, 4)/5"],["Dot product","(0·3 + 7·4)/5 = 28/5"]]} a={"28/5"} />
+<Problem n={8} q={"Find the greatest rate of increase of xy² at (2, 1) and its direction."} steps={[["Gradient","∇f = (y², 2xy)  →  (1, 4) at (2, 1)"],["Greatest rate","|∇f| = √(1 + 16) = √17"],["Direction","along ∇f: (1, 4)/√17"]]} a={"√17, along (1, 4)/√17"} />
+<Problem n={9} q={"f = x²z + yz². Find the slope at (1, 2, 1) in the direction (2, −1, 2)."} steps={[["Gradient","∇f = (2xz, z², x² + 2yz)  →  (2, 1, 5) at (1, 2, 1)"],["Unit direction","|(2, −1, 2)| = 3,  û = (2, −1, 2)/3"],["Dot product","(4 − 1 + 10)/3 = 13/3"]]} a={"13/3"} />
+<Problem n={10} q={"Find the tangent plane to z = x²y + y at (2, 1)."} steps={[["Value at (2, 1)","z = 4·1 + 1 = 5"],["Partial derivatives","fx = 2xy = 4,  fy = x² + 1 = 5"],["Plane","z = 5 + 4(x − 2) + 5(y − 1)\n  = 4x + 5y − 8"]]} a={"z = 4x + 5y − 8"} />
+<Problem n={11} q={"Use that plane to estimate f(2.02, 0.97)."} steps={[["Substitute into the plane","z = 4(2.02) + 5(0.97) − 8"],["Evaluate","8.08 + 4.85 − 8 = 4.93"]]} a={"4.93"} />
+<Problem n={12} q={"Find all second derivatives of x⁴ + x²y³."} steps={[["First derivatives","fx = 4x³ + 2xy³\nfy = 3x²y²"],["Second derivatives","fxx = 12x² + 2y³\nfyy = 6x²y\nfxy = 6xy²"]]} a={"fxx = 12x² + 2y³\nfyy = 6x²y\nfxy = 6xy²"} />
+<Problem n={13} q={"Find fxy for f = sin(x²y)."} steps={[["Differentiate in x","fx = 2xy cos(x²y)"],["Differentiate in y (product rule)","fxy = 2x cos(x²y) + 2xy · (−sin(x²y)) · x²\n    = 2x cos(x²y) − 2x³y sin(x²y)"]]} a={"2x cos(x²y) − 2x³y sin(x²y)"} />
+<Problem n={14} q={"In which unit directions is y/x unchanging at (1, 2)?"} steps={[["Gradient","∇f = (−y/x², 1/x)  →  (−2, 1) at (1, 2)"],["Unchanging means perpendicular to ∇f","(a, b)·(−2, 1) = 0  →  b = 2a"],["Unit directions","±(1, 2)/√5"]]} a={"±(1, 2)/√5"} />
+<Problem n={15} q={"f = x² + y². At (3, 4), what angle to ∇f gives a slope of 5?"} steps={[["Gradient","∇f = (2x, 2y) = (6, 8),  |∇f| = 10"],["Use slope = |∇f| cos θ","10 cos θ = 5  →  cos θ = 1/2"],["Angle","θ = 60°"]]} a={"|∇f| = 10, so cos θ = 1/2\nθ = 60°"} />
+
+## C. Applied and challenge
+
+<Problem n={16} q={"Show u = e²ˣ cos 2y satisfies uxx + uyy = 0."} steps={[["x derivatives","ux = 2e²ˣ cos 2y,  uxx = 4e²ˣ cos 2y = 4u"],["y derivatives","uy = −2e²ˣ sin 2y,  uyy = −4e²ˣ cos 2y = −4u"],["Add","uxx + uyy = 4u − 4u = 0 ✓"]]} a={"uxx = 4u,  uyy = −4u"} />
+<Problem n={17} q={"Can a function have fx = 3y and fy = 2x?"} steps={[["Mixed derivatives","(fx)y = ∂(3y)/∂y = 3\n(fy)x = ∂(2x)/∂x = 2"],["Conclude","For a smooth f these must be equal, but 3 ≠ 2. No such function."]]} a={"No: the mixed derivatives would be 3 and 2"} />
+<Problem n={18} q={"Find all f with fx = 2xy and fy = x² + 4y."} steps={[["Integrate fx in x","f = x²y + g(y)"],["Match fy","fy = x² + g′(y) = x² + 4y  →  g′(y) = 4y"],["Result","g = 2y² + C,  f = x²y + 2y² + C"]]} a={"x²y + 2y² + C"} />
+<Problem n={19} q={"Show that ∇(fg) = f∇g + g∇f."} steps={[["x component","∂(fg)/∂x = f ∂g/∂x + g ∂f/∂x  (product rule)"],["Every component","The same holds for y (and z)"],["Collect into vectors","∇(fg) = f∇g + g∇f"]]} a={"Apply the product rule to each component:\n∂(fg)/∂x = f ∂g/∂x + g ∂f/∂x"} />
+<Problem n={20} q={"T = 40 − x² − 2y². At (3, 1), which way does T fall fastest, and at what rate?"} steps={[["Gradient","∇T = (−2x, −4y)  →  (−6, −4) at (3, 1)"],["Fastest fall is along −∇T","(6, 4), unit (3, 2)/√13"],["Rate","|∇T| = √(36 + 16) = √52 = 2√13"]]} a={"Along (3, 2)/√13, at 2√13 per unit"} />
+<Problem n={21} q={"Show u = e⁻⁴ᵗ sin 2x satisfies ut = uxx."} steps={[["Time derivative","ut = −4e⁻⁴ᵗ sin 2x = −4u"],["Space derivatives","ux = 2e⁻⁴ᵗ cos 2x,  uxx = −4e⁻⁴ᵗ sin 2x = −4u"],["Compare","ut = uxx ✓"]]} a={"ut = −4u and uxx = −4u"} />

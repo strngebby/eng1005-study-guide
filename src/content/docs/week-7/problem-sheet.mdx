@@ -1,0 +1,42 @@
+---
+title: "Problem sheet"
+description: "21 mixed problems, easy to hard. Write full working, then open the answer."
+sidebar:
+  order: 4
+---
+import Problem from '../../../components/Problem.astro';
+import PrintButton from '../../../components/PrintButton.astro';
+
+<p class="lead">21 mixed problems, easy to hard. Write full working, then open the answer.</p>
+
+<PrintButton label="Print problem sheet" />
+
+## A. Warm-up
+
+<Problem n={1} q={"∫ cos 5x dx"} steps={[["Substitute u = 5x","du = 5 dx"],["Integrate","(1/5) ∫ cos u du = sin 5x / 5 + C"]]} a={"sin 5x / 5 + C"} />
+<Problem n={2} q={"∫ x/(x² + 4) dx"} steps={[["Substitute u = x² + 4","du = 2x dx"],["Integrate","(1/2) ∫ du/u = ln(x² + 4)/2 + C\n(no absolute value needed: x² + 4 > 0)"]]} a={"ln(x² + 4)/2 + C"} />
+<Problem n={3} q={"∫ sin² x cos x dx"} steps={[["Substitute u = sin x","du = cos x dx"],["Integrate","∫ u² du = sin³ x / 3 + C"]]} a={"sin³ x / 3 + C"} />
+<Problem n={4} q={"∫ x e⁻ˣ dx"} steps={[["Parts: f = x, g′ = e⁻ˣ","f′ = 1,  g = −e⁻ˣ"],["Apply the formula","−x e⁻ˣ + ∫ e⁻ˣ dx = −x e⁻ˣ − e⁻ˣ"],["Factorise","−(x + 1) e⁻ˣ + C"]]} a={"−(x + 1) e⁻ˣ + C"} />
+<Problem n={5} q={"Find sinh(ln 3)."} steps={[["Use the definition","sinh(ln 3) = (e^(ln 3) − e^(−ln 3))/2"],["Simplify","(3 − 1/3)/2 = 4/3"]]} a={"4/3"} />
+<Problem n={6} q={"Differentiate sinh(x²)."} steps={[["Chain rule","d/dx sinh(u) = cosh(u) · u′,  with u = x²"],["Result","2x cosh(x²)"]]} a={"2x cosh(x²)"} />
+
+## B. Core skills
+
+<Problem n={7} q={"∫₀^π x sin 2x dx"} steps={[["Parts: f = x, g′ = sin 2x","f′ = 1,  g = −cos 2x / 2"],["Apply the formula","[−x cos 2x / 2] + ∫ cos 2x / 2 dx\n= [−x cos 2x / 2 + sin 2x / 4]"],["Evaluate from 0 to π","(−π/2 + 0) − 0 = −π/2"]]} a={"−π/2"} />
+<Problem n={8} q={"∫ x² ln x dx"} steps={[["Parts: f = ln x, g′ = x²","f′ = 1/x,  g = x³/3"],["Apply the formula","x³ ln x / 3 − ∫ x²/3 dx"],["Integrate","x³ ln x / 3 − x³/9 + C"]]} a={"x³ ln x / 3 − x³/9 + C"} />
+<Problem n={9} q={"∫ tan⁻¹ x dx"} steps={[["Parts: f = tan⁻¹ x, g′ = 1","f′ = 1/(1 + x²),  g = x"],["Apply the formula","x tan⁻¹ x − ∫ x/(1 + x²) dx"],["Substitute u = 1 + x²","x tan⁻¹ x − ln(1 + x²)/2 + C"]]} a={"x tan⁻¹ x − ln(1 + x²)/2 + C"} />
+<Problem n={10} q={"∫ e^√x dx"} steps={[["Substitute u = √x","x = u²,  dx = 2u du"],["Rewrite","∫ 2u eᵘ du"],["Parts","2(u eᵘ − eᵘ) = 2(√x − 1) e^√x + C"]]} a={"2(√x − 1) e^√x + C"} />
+<Problem n={11} q={"∫ from 0 to π/2 of sin 3x cos x dx"} steps={[["Product to sum","sin 3x cos x = (sin 4x + sin 2x)/2"],["Integrate","[−cos 4x / 8 − cos 2x / 4]"],["Evaluate from 0 to π/2","(−1/8 + 1/4) − (−1/8 − 1/4) = 1/2"]]} a={"1/2"} />
+<Problem n={12} q={"cosh x = 13/5 and x > 0. Find sinh x, tanh x and x."} steps={[["Identity","sinh² x = cosh² x − 1 = 169/25 − 1 = 144/25\nx > 0, so sinh x = 12/5"],["Ratio","tanh x = (12/5)/(13/5) = 12/13"],["Solve for x","eˣ = cosh x + sinh x = 25/5 = 5  →  x = ln 5"]]} a={"12/5, 12/13, ln 5"} />
+<Problem n={13} q={"Solve 5 cosh x − 3 sinh x = 4."} steps={[["Write in terms of eˣ","5(eˣ + e⁻ˣ)/2 − 3(eˣ − e⁻ˣ)/2 = eˣ + 4e⁻ˣ"],["Multiply by eˣ","e²ˣ − 4eˣ + 4 = 0  →  (eˣ − 2)² = 0"],["Solve","eˣ = 2  →  x = ln 2"]]} a={"x = ln 2"} />
+<Problem n={14} q={"Differentiate sinh⁻¹(2x)."} steps={[["Derivative of sinh⁻¹ u","1/√(1 + u²)"],["Chain rule with u = 2x","2/√(1 + 4x²)"]]} a={"2/√(1 + 4x²)"} />
+<Problem n={15} q={"∫ tanh x dx"} steps={[["Write as a ratio","tanh x = sinh x / cosh x"],["Substitute u = cosh x","du = sinh x dx, so the integral is ∫ du/u"],["Result","ln(cosh x) + C  (cosh x > 0)"]]} a={"ln(cosh x) + C"} />
+
+## C. Applied and challenge
+
+<Problem n={16} q={"∫ e²ˣ sin x dx"} steps={[["Parts: f = sin x, g′ = e²ˣ","I = e²ˣ sin x / 2 − (1/2) ∫ e²ˣ cos x dx"],["Parts again on the new integral","∫ e²ˣ cos x dx = e²ˣ cos x / 2 + (1/2) I"],["Solve for I","I = e²ˣ sin x / 2 − e²ˣ cos x / 4 − I/4\n(5/4) I = e²ˣ (2 sin x − cos x)/4\nI = e²ˣ (2 sin x − cos x)/5 + C"]]} a={"e²ˣ (2 sin x − cos x)/5 + C"} />
+<Problem n={17} q={"∫ dx/√(x² − 16), x > 4"} steps={[["Substitute x = 4 cosh u","dx = 4 sinh u du\n√(x² − 16) = 4 sinh u  (u > 0)"],["Simplify","∫ 4 sinh u du / (4 sinh u) = ∫ du = u"],["Return to x","cosh⁻¹(x/4) + C"]]} a={"cosh⁻¹(x/4) + C"} />
+<Problem n={18} q={"Show cosh 2x = 1 + 2 sinh² x."} steps={[["Double-angle identity","cosh 2x = cosh² x + sinh² x"],["Replace cosh² x","cosh² x = 1 + sinh² x"],["Combine","cosh 2x = 1 + 2 sinh² x"]]} a={"cosh 2x = cosh² x + sinh² x\ncosh² x = 1 + sinh² x"} />
+<Problem n={19} q={"∫ sinh² x dx"} steps={[["Rearrange problem 18","sinh² x = (cosh 2x − 1)/2"],["Integrate","(1/2)(sinh 2x / 2 − x)"],["Result","sinh 2x / 4 − x/2 + C"]]} a={"sinh 2x / 4 − x/2 + C"} />
+<Problem n={20} q={"Iₙ = ∫₀¹ xⁿ eˣ dx. Show Iₙ = e − n Iₙ₋₁ and find I₃."} steps={[["Parts: f = xⁿ, g′ = eˣ","Iₙ = [xⁿ eˣ]₀¹ − n ∫₀¹ xⁿ⁻¹ eˣ dx = e − n Iₙ₋₁"],["Start value","I₀ = ∫₀¹ eˣ dx = e − 1"],["Step up","I₁ = e − (e − 1) = 1\nI₂ = e − 2\nI₃ = e − 3(e − 2) = 6 − 2e"]]} a={"Parts with f = xⁿ gives the formula\nI₃ = 6 − 2e"} />
+<Problem n={21} q={"∫₀¹ x³ √(1 + x²) dx"} steps={[["Substitute u = 1 + x²","du = 2x dx,  x² = u − 1\nlimits: u = 1 to 2"],["Rewrite","(1/2) ∫₁² (u − 1)√u du = (1/2) ∫₁² (u^(3/2) − u^(1/2)) du"],["Integrate","[u^(5/2)/5 − u^(3/2)/3] from 1 to 2"],["Evaluate","u = 2: 4√2/5 − 2√2/3 = 2√2/15\nu = 1: 1/5 − 1/3 = −2/15\ndifference: (2 + 2√2)/15"]]} a={"(2 + 2√2)/15"} />

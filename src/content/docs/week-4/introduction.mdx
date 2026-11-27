@@ -1,0 +1,80 @@
+---
+title: "Eigenvalues and eigenvectors"
+description: "Find the directions a matrix only stretches, then use them to diagonalise it and raise it to high powers."
+sidebar:
+  label: "Introduction and explanation"
+  order: 1
+---
+import Eq from '../../../components/Eq.astro';
+import EigenFigure from '../../../components/EigenFigure.astro';
+
+<p class="lead">Find the directions a matrix only stretches, then use them to diagonalise it and raise it to high powers.</p>
+
+## What is an eigenvector?
+
+Most vectors change direction when a matrix acts on them. An **eigenvector** stays on its own line: it is only stretched, shrunk or flipped. The stretch factor is its **eigenvalue** λ.
+
+<Eq>{"Av = λv,   v ≠ 0\n\nλ > 1       stretched\n0 < λ < 1   shrunk\nλ < 0       flipped to point backwards\nλ = 0       squashed to the origin"}</Eq>
+
+Any non-zero multiple of an eigenvector is also one, so an eigenvector really names a **direction**. Turn v in the figure until Av lines up with it.
+
+<EigenFigure />
+
+## How to find them
+
+Av = λv rearranges to (A − λI)v = 0. A non-zero solution exists only when A − λI is **not invertible**.
+
+<Eq>{"1. solve det(A − λI) = 0      (characteristic equation)\n2. for each λ, solve (A − λI)v = 0\n\n2 × 2 shortcut:\nλ² − (trace A) λ + det A = 0"}</Eq>
+
+The **trace** is the sum of the diagonal entries. In step 2 you must get at least one free variable. If you only get v = 0, an eigenvalue is wrong.
+
+## What can happen for 2 × 2
+
+| Eigenvalues | Eigenvector directions | Example |
+| --- | --- | --- |
+| Two different real | Two | Stretch |
+| One repeated | Only one | Shear [1 1; 0 1] |
+| One repeated | Every vector | Scaling [3 0; 0 3] |
+| Complex pair a ± bi | Complex eigenvectors, none in the real plane | Rotation |
+
+For a real matrix, complex eigenvalues and their eigenvectors come in **conjugate pairs**, so you only need to solve for one of them.
+
+## 3 × 3 matrices and multiplicity
+
+The method is the same, but det(A − λI) is now a cubic. Expand along the row or column with the most zeros, and keep common factors instead of multiplying out.
+
+<Eq>{"sum of eigenvalues     = trace A\nproduct of eigenvalues = det A\ntriangular matrix: eigenvalues are the diagonal entries"}</Eq>
+
+**Algebraic multiplicity**: how many times λ is a root. **Geometric multiplicity**: how many linearly independent eigenvectors it has (the number of free variables).
+
+<Eq>{"1 ≤ geometric ≤ algebraic"}</Eq>
+
+## Diagonalisation
+
+Put n linearly independent eigenvectors in the columns of V, and their eigenvalues, **in the same order**, on the diagonal of D.
+
+<Eq>{"AV = VD        A = V D V⁻¹"}</Eq>
+
+This works exactly when every eigenvalue has geometric multiplicity equal to algebraic multiplicity. If all n eigenvalues are different, it always works. The answer is not unique.
+
+A real **symmetric** matrix has real eigenvalues, and eigenvectors for different eigenvalues are orthogonal. Scale them to length 1 (and pick orthogonal ones inside a repeated eigenvalue) and then V⁻¹ = Vᵀ.
+
+## Powers and related matrices
+
+The inner V⁻¹V pairs cancel, so high powers become easy.
+
+<Eq>{"Aⁿ = V Dⁿ V⁻¹\n\nIf Av = λv then, with the same v:\nAⁿv = λⁿv\nA⁻¹v = (1/λ)v        (A invertible)\n(A + cI)v = (λ + c)v\n(kA)v = (kλ)v"}</Eq>
+
+## Which tool do I use?
+
+| You want | Use |
+| --- | --- |
+| Eigenvalues | det(A − λI) = 0 |
+| Quick 2 × 2 eigenvalues | λ² − (trace)λ + det = 0 |
+| Eigenvectors | Row-reduce (A − λI)v = 0 |
+| Check your eigenvalues | Sum = trace, product = det |
+| Triangular matrix | Read the diagonal |
+| Diagonalisable? | Geometric = algebraic multiplicity for every λ |
+| High powers | Aⁿ = V Dⁿ V⁻¹ |
+| Matrix from eigenpairs | A = V D V⁻¹ |
+| V⁻¹ = Vᵀ | Symmetric A, unit orthogonal eigenvectors |

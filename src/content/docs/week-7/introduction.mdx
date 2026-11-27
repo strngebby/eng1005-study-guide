@@ -1,0 +1,69 @@
+---
+title: "Integration techniques and hyperbolic functions"
+description: "Reverse the chain and product rules, then meet cosh, sinh and their relatives."
+sidebar:
+  label: "Introduction and explanation"
+  order: 1
+---
+import Eq from '../../../components/Eq.astro';
+import HyperbolicGraph from '../../../components/HyperbolicGraph.astro';
+
+<p class="lead">Reverse the chain and product rules, then meet cosh, sinh and their relatives.</p>
+
+## Integrals you should know
+
+Integration reverses differentiation. A definite integral is a signed area; an indefinite integral is a family of functions.
+
+<Eq>{"∫ xⁿ dx = xⁿ⁺¹/(n + 1) + C     (n ≠ −1)\n∫ 1/x dx = ln|x| + C\n∫ eˣ dx = eˣ + C\n∫ sin x dx = −cos x + C\n∫ cos x dx = sin x + C"}</Eq>
+
+## Substitution
+
+This reverses the chain rule. Choose u so that its derivative also appears, apart from a constant.
+
+<Eq>{"u = g(x),  du = g′(x) dx\n∫ f(g(x)) g′(x) dx = ∫ f(u) du"}</Eq>
+
+Change the limits too, or return to x before using them.
+
+## Integration by parts
+
+This reverses the product rule.
+
+<Eq>{"∫ f g′ dx = f g − ∫ f′ g dx"}</Eq>
+
+Pick f so that it gets simpler when differentiated: a polynomial is usually a good f, but a logarithm or inverse function takes priority (use g′ = 1 if it is alone). For eˣ with sin or cos, apply parts twice and solve for the original integral.
+
+## Hyperbolic functions
+
+<Eq>{"cosh x = (eˣ + e⁻ˣ)/2        even, at least 1\nsinh x = (eˣ − e⁻ˣ)/2        odd, any value\ntanh x = sinh x / cosh x     between −1 and 1\nsech = 1/cosh, cosech = 1/sinh, coth = 1/tanh"}</Eq>
+
+Slide x in the figure and check that cosh² x − sinh² x stays equal to 1.
+
+<HyperbolicGraph />
+
+## Identities and derivatives
+
+<Eq>{"cosh² x − sinh² x = 1\n1 − tanh² x = sech² x\ncosh 2x = cosh² x + sinh² x\nsinh 2x = 2 sinh x cosh x\n\n(sinh x)′ = cosh x\n(cosh x)′ = sinh x        (no minus sign)\n(tanh x)′ = sech² x"}</Eq>
+
+## Inverses and hyperbolic substitution
+
+Writing y in terms of eˣ gives a quadratic, so inverses are logarithms.
+
+<Eq>{"sinh⁻¹ x = ln(x + √(x² + 1))\ncosh⁻¹ x = ln(x + √(x² − 1))     x ≥ 1"}</Eq>
+
+| Integrand contains | Try |
+| --- | --- |
+| √(x² + a²) | x = a sinh u |
+| √(x² − a²) | x = a cosh u |
+| √(a² − x²) | x = a sin u |
+
+## Which tool do I use?
+
+| You want | Use |
+| --- | --- |
+| Function times its inner derivative | Substitution |
+| Product of unlike functions | By parts |
+| Lone ln x or inverse function | Parts with g′ = 1 |
+| Exponential times sine or cosine | Parts twice, solve for I |
+| √(x² + a²) | x = a sinh u |
+| √(x² − a²) | x = a cosh u |
+| Solve a hyperbolic equation | Write in terms of eˣ |

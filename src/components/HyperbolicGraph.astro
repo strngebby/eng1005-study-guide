@@ -1,0 +1,18 @@
+---
+/** Graphs of cosh, sinh and tanh with a movable x. <HyperbolicGraph /> */
+import { drawHyp } from '../lib/plots';
+import './FigureControls.css';
+const first = drawHyp(0.7);
+---
+<figure class="hyp fig2d fig-side not-content">
+	<svg viewBox="-160 -130 320 260" role="img" aria-label="Graphs of cosh, sinh and tanh" set:html={first.svg} />
+	<label class="label print-hide">x<input type="range" data-h="x" aria-label="Value of x" min="-2" max="2" step="0.1" value="0.7" /></label>
+	<figcaption aria-live="polite">{first.cap}</figcaption>
+</figure>
+<script>
+	import { drawHyp } from '../lib/plots';
+	document.querySelectorAll<HTMLElement>('figure.hyp').forEach((f) => {
+		const s = f.querySelector<HTMLInputElement>('[data-h]')!;
+		s.addEventListener('input', () => { const r = drawHyp(+s.value); f.querySelector('svg')!.innerHTML = r.svg; f.querySelector('figcaption')!.textContent = r.cap; });
+	});
+</script>

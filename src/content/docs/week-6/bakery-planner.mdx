@@ -1,0 +1,81 @@
+---
+title: "Challenge: Bakery Planner"
+description: "Nine linked questions, no calculator. A bakery makes x trays of bread and y trays of cake. Profit is P = 24x + 30y − 2x² − 2y² − 2xy."
+sidebar:
+  order: 5
+---
+import Exercise from '../../../components/Exercise.astro';
+
+<p class="lead">Nine linked questions, no calculator. A bakery makes x trays of bread and y trays of cake. Profit is P = 24x + 30y − 2x² − 2y² − 2xy.</p>
+
+## Question 1
+
+<Exercise
+	q={"Find the profit at (2, 2)."}
+	hint={"Substitute."}
+	solution={"48 + 60 − 24 = 84"}
+/>
+
+## Question 2
+
+<Exercise
+	q={"Find ∇P at (2, 2). Should production of each rise?"}
+	hint={"Differentiate."}
+	solution={"∇P = (24 − 4x − 2y, 30 − 4y − 2x) = (12, 18)\nBoth slopes are positive, so yes"}
+/>
+
+## Question 3
+
+<Exercise
+	q={"Find the critical point."}
+	hint={"Solve two linear equations."}
+	solution={"2x + y = 12,  x + 2y = 15\n(3, 6)"}
+/>
+
+## Question 4
+
+<Exercise
+	q={"Classify it and find the profit there."}
+	hint={"Use the Hessian."}
+	solution={"H = [−4 −2; −2 −4], det = 12 > 0, Pxx < 0\nmaximum P = 126"}
+/>
+
+## Question 5
+
+<Exercise
+	q={"The oven now holds exactly x + y = 6 trays. Maximise P."}
+	hint={"∇P = λ(1, 1)."}
+	solution={"24 − 4x − 2y = 30 − 4y − 2x  →  y = x + 3\n(1.5, 4.5), P = 112.5"}
+/>
+
+## Question 6
+
+<Exercise
+	q={"Find λ. Then find the best profit with capacity 7 and compare."}
+	hint={"λ estimates the gain from one more tray."}
+	solution={"λ = 9\ncapacity 7: (2, 5), P = 120\ngain 7.5, close to λ"}
+/>
+
+## Question 7
+
+<Exercise
+	q={"If no bread is made (x = 0), what is the best cake output and profit?"}
+	hint={"Maximise one variable."}
+	solution={"P = 30y − 2y²\ny = 7.5, P = 112.5"}
+/>
+
+## Question 8
+
+<Exercise
+	q={"Find the absolute extremes of P on x ≥ 0, y ≥ 0, x + y ≤ 12."}
+	hint={"Check inside, three edges and corners."}
+	solution={"corners: 0, 0, 72\nedge maxima: 72 (y = 0), 112.5 (x = 0), 112.5 (x + y = 12)\nmaximum 126 at (3, 6); minimum 0 at (0, 0) and (12, 0)"}
+/>
+
+## Question 9
+
+<Exercise
+	q={"Put u = x − 3, v = y − 6 and show without calculus that 126 is the largest possible profit."}
+	hint={"Write P in u and v as minus a sum of squares."}
+	solution={"P = 126 − 2u² − 2v² − 2uv\n  = 126 − (u + v)² − u² − v² ≤ 126"}
+/>

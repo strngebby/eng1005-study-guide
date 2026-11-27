@@ -1,0 +1,9 @@
+/* Shared look for the 2D interactive figures */
+figure.fig2d { margin: 0; }
+figure.fig2d svg { display: block; width: 100%; height: auto; background: var(--paper); border: 1px solid var(--line); border-radius: 3px; touch-action: pan-y; }
+figure.fig2d svg text { font: 500 13px var(--mono); }
+figure.fig2d .row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 10px; }
+figure.fig2d .pre { padding: 4px 9px; font-size: .8rem; }
+figure.fig2d label { text-transform: none; display: grid; grid-template-columns: 18px 1fr; align-items: center; margin-top: 6px; }
+figure.fig2d input[type='range'] { width: 100%; accent-color: var(--accent); margin: 0; }
+figure.fig2d figcaption { font-size: .8rem; color: var(--dim); margin-top: 5px; }

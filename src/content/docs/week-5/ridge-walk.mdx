@@ -1,0 +1,81 @@
+---
+title: "Challenge: Ridge Walk"
+description: "Nine linked questions, no calculator. A hill has height h(x, y) = 100 − x² − 2y². A hiker stands at P = (4, 3)."
+sidebar:
+  order: 5
+---
+import Exercise from '../../../components/Exercise.astro';
+
+<p class="lead">Nine linked questions, no calculator. A hill has height h(x, y) = 100 − x² − 2y². A hiker stands at P = (4, 3).</p>
+
+## Question 1
+
+<Exercise
+	q={"Find the height at P and describe the contour through P."}
+	hint={"Substitute, then set h equal to that value."}
+	solution={"h = 66\ncontour x² + 2y² = 34, an ellipse"}
+/>
+
+## Question 2
+
+<Exercise
+	q={"Find ∇h at P."}
+	hint={"Differentiate in x and in y."}
+	solution={"∇h = (−2x, −4y) = (−8, −12)"}
+/>
+
+## Question 3
+
+<Exercise
+	q={"The hiker walks towards (7, 7). What is the slope at the start? Uphill or downhill?"}
+	hint={"The direction is (3, 4)."}
+	solution={"û = (3, 4)/5\nslope = (−24 − 48)/5 = −72/5, downhill"}
+/>
+
+## Question 4
+
+<Exercise
+	q={"In which direction is the climb steepest, and what is that slope?"}
+	hint={"Use ∇h and its length."}
+	solution={"(−2, −3)/√13\nslope √208 = 4√13"}
+/>
+
+## Question 5
+
+<Exercise
+	q={"Which directions keep the height constant at P?"}
+	hint={"Perpendicular to ∇h."}
+	solution={"±(3, −2)/√13"}
+/>
+
+## Question 6
+
+<Exercise
+	q={"Find the tangent plane at P."}
+	hint={"h(P) + ∇h · (x − 4, y − 3)."}
+	solution={"z = 66 − 8(x − 4) − 12(y − 3)\nz = 134 − 8x − 12y"}
+/>
+
+## Question 7
+
+<Exercise
+	q={"Estimate h(4.1, 2.9) with the plane, then find the exact value."}
+	hint={"Changes are +0.1 and −0.1."}
+	solution={"plane: 66 − 0.8 + 1.2 = 66.4\nexact: 100 − 16.81 − 16.82 = 66.37"}
+/>
+
+## Question 8
+
+<Exercise
+	q={"Where is the ground flat? Find the height there and the second derivatives."}
+	hint={"Solve ∇h = 0."}
+	solution={"(0, 0), height 100\nhxx = −2, hyy = −4, hxy = 0"}
+/>
+
+## Question 9
+
+<Exercise
+	q={"The hiker walks straight towards that point. Find the starting slope. Why is it less than in question 4?"}
+	hint={"Direction (−4, −3)."}
+	solution={"slope = (32 + 36)/5 = 13.6\n13.6² = 184.96 < 208: this path is not along ∇h"}
+/>

@@ -1,0 +1,51 @@
+---
+title: "Worked solutions"
+description: "Try each step yourself before revealing it."
+sidebar:
+  order: 2
+---
+import StepReveal from '../../../components/StepReveal.astro';
+
+<p class="lead">Try each step yourself before revealing it.</p>
+
+## 1. A 2 × 2 matrix from start to finish
+
+<StepReveal
+	problem={"A = [4 1]\n    [2 3]\nFind the eigenvalues and eigenvectors."}
+	steps={[["Characteristic equation","trace 7, det 10\nλ² − 7λ + 10 = 0"],["Eigenvalues","(λ − 2)(λ − 5) = 0  →  λ = 2, 5"],["λ = 2","[2 1; 2 1] v = 0  →  2x + y = 0\nv = (1, −2)"],["λ = 5","[−1 1; 2 −2] v = 0  →  y = x\nv = (1, 1)"]]}
+/>
+
+## 2. Complex eigenvalues
+
+<StepReveal
+	problem={"A = [3 −2]\n    [4 −1]"}
+	steps={[["Characteristic equation","λ² − 2λ + 5 = 0"],["Quadratic formula","λ = (2 ± √(4 − 20)) / 2 = 1 ± 2i"],["Solve for λ = 1 + 2i","row 1: (2 − 2i)x − 2y = 0\ny = (1 − i)x  →  v = (1, 1 − i)"],["Use the conjugate","λ = 1 − 2i,  v = (1, 1 + i)"]]}
+/>
+
+## 3. A repeated eigenvalue in 3 × 3
+
+<StepReveal
+	problem={"A = [2 0 0]\n    [1 3 1]\n    [1 1 3]"}
+	steps={[["Expand along row 1","(2 − λ)[(3 − λ)² − 1] = 0"],["Factorise","(2 − λ)(2 − λ)(4 − λ) = 0\nλ = 2 (algebraic multiplicity 2), λ = 4"],["λ = 2","all rows reduce to x + y + z = 0\ntwo free variables:\nv = (1, −1, 0) and (1, 0, −1)\ngeometric multiplicity 2"],["λ = 4","row 1: −2x = 0  →  x = 0\nrow 2: −y + z = 0\nv = (0, 1, 1)"],["Conclusion","Three independent eigenvectors, so A is diagonalisable."]]}
+/>
+
+## 4. Diagonalise, then find Aⁿ
+
+<StepReveal
+	problem={"A = [3 1]\n    [0 2]"}
+	steps={[["Eigenvalues","Triangular, so λ = 3 and 2."],["Eigenvectors","λ = 3: (1, 0)     λ = 2: (1, −1)"],["Build V and D","V = [1 1; 0 −1]     D = [3 0; 0 2]"],["Invert V","det V = −1  →  V⁻¹ = [1 1; 0 −1]"],["Multiply V Dⁿ V⁻¹","Aⁿ = [3ⁿ   3ⁿ − 2ⁿ]\n     [0     2ⁿ     ]\ncheck n = 1: [3 1; 0 2] ✓"]]}
+/>
+
+## 5. Symmetric matrix with V⁻¹ = Vᵀ
+
+<StepReveal
+	problem={"A = [5 2]\n    [2 2]\nWrite A = V D Vᵀ."}
+	steps={[["Eigenvalues","λ² − 7λ + 6 = 0  →  λ = 1, 6"],["Eigenvectors","λ = 1: (1, −2)     λ = 6: (2, 1)"],["Check they are orthogonal","1·2 + (−2)·1 = 0 ✓"],["Normalise","Both have length √5."],["Result","V = (1/√5) [ 1  2]\n           [−2  1]\nD = [1 0; 0 6]"]]}
+/>
+
+## 6. Is it diagonalisable?
+
+<StepReveal
+	problem={"B = [2 1  0]\n    [0 2  0]\n    [0 0 −1]"}
+	steps={[["Eigenvalues","Triangular: 2, 2, −1"],["Only the repeated one can fail","Check λ = 2."],["Solve (B − 2I)v = 0","y = 0  and  −3z = 0\nonly x is free: v = (1, 0, 0)"],["Compare multiplicities","algebraic 2, geometric 1\nB is not diagonalisable."]]}
+/>

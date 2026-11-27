@@ -1,0 +1,73 @@
+---
+title: "Multivariable calculus I"
+description: "Picture functions of several variables, then measure their slope in any direction."
+sidebar:
+  label: "Introduction and explanation"
+  order: 1
+---
+import Eq from '../../../components/Eq.astro';
+import ContourMap from '../../../components/ContourMap.astro';
+
+<p class="lead">Picture functions of several variables, then measure their slope in any direction.</p>
+
+## Surfaces and contours
+
+A function f(x, y) can be drawn as the surface z = f(x, y), or as a map of **contours**: curves on which f has a constant value.
+
+<Eq>{"contour:    f(x, y) = C\nlevel set:  f(x, y, z) = C   (a surface)\n\nx² + y²   →  circles\nx² − y²   →  hyperbolas\n2x + y    →  parallel lines"}</Eq>
+
+Closely packed contours mean a steep surface. Move the point in the figure and watch the gradient.
+
+<ContourMap set="ct5" />
+
+## Partial derivatives
+
+∂f/∂x is the slope in the x direction: differentiate with respect to x and **treat every other variable as a constant**. ∂f/∂y works the same way.
+
+<Eq>{"f = x²y + 5y\n∂f/∂x = 2xy\n∂f/∂y = x² + 5"}</Eq>
+
+## Gradient and directional derivative
+
+The **gradient** collects the partial derivatives into a vector. The slope in the direction of a **unit** vector û is a dot product with it.
+
+<Eq>{"∇f = (∂f/∂x, ∂f/∂y, ...)\nslope along û = û · ∇f(point)"}</Eq>
+
+Always normalise the direction first. "Towards the point Q" means the direction Q − P.
+
+## What the gradient tells you
+
+<Eq>{"û · ∇f = |∇f| cos θ"}</Eq>
+
+| Direction | Rate of change |
+| --- | --- |
+| Along ∇f | Greatest increase, \|∇f\| |
+| Opposite to ∇f | Greatest decrease, −\|∇f\| |
+| At right angles to ∇f | Zero: you are following the contour |
+
+So ∇f is **perpendicular to contours**. On a map, |∇f| ≈ (difference between contour levels) ÷ (distance between the contours).
+
+## Tangent planes and estimates
+
+The tangent plane touches the surface at a point and has the same gradient there. Near that point it is a good estimate of f.
+
+<Eq>{"z = f(a, b) + fx(a, b)(x − a) + fy(a, b)(y − b)"}</Eq>
+
+## Higher partial derivatives
+
+Differentiate again, in the same or another variable.
+
+<Eq>{"fxx = ∂²f/∂x²        fyy = ∂²f/∂y²\nfxy = ∂²f/∂x∂y = fyx   (when continuous)"}</Eq>
+
+To show a function satisfies a **partial differential equation**, compute each derivative in it and substitute.
+
+## Which tool do I use?
+
+| You want | Use |
+| --- | --- |
+| Slope along an axis | Partial derivative |
+| Slope along a direction | û · ∇f with unit û |
+| Steepest direction | ∇f |
+| Largest slope | \|∇f\| |
+| Level direction | Perpendicular to ∇f |
+| Nearby value | Tangent plane |
+| Verify a PDE | Differentiate and substitute |

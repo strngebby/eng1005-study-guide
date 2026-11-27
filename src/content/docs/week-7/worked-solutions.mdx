@@ -1,0 +1,51 @@
+---
+title: "Worked solutions"
+description: "Try each step yourself before revealing it."
+sidebar:
+  order: 2
+---
+import StepReveal from '../../../components/StepReveal.astro';
+
+<p class="lead">Try each step yourself before revealing it.</p>
+
+## 1. Substitution
+
+<StepReveal
+	problem={"∫ x² √(x³ + 1) dx"}
+	steps={[["Choose u","u = x³ + 1,  du = 3x² dx"],["Rewrite","(1/3) ∫ √u du"],["Integrate and return","(2/9)(x³ + 1)^(3/2) + C"]]}
+/>
+
+## 2. Parts, twice
+
+<StepReveal
+	problem={"∫ x² e³ˣ dx"}
+	steps={[["First","f = x², g′ = e³ˣ\nx² e³ˣ/3 − (2/3) ∫ x e³ˣ dx"],["Second","∫ x e³ˣ dx = x e³ˣ/3 − e³ˣ/9"],["Combine","e³ˣ (x²/3 − 2x/9 + 2/27) + C"]]}
+/>
+
+## 3. The integral that returns
+
+<StepReveal
+	problem={"I = ∫ eˣ cos x dx"}
+	steps={[["Parts","I = eˣ sin x − ∫ eˣ sin x dx"],["Parts again","∫ eˣ sin x dx = −eˣ cos x + I"],["Solve for I","I = eˣ sin x + eˣ cos x − I\nI = eˣ (sin x + cos x)/2 + C"]]}
+/>
+
+## 4. A logarithm with limits
+
+<StepReveal
+	problem={"∫₁ᵉ x ln x dx"}
+	steps={[["Choose f = ln x","[x² ln x / 2] − ∫ x/2 dx"],["Integrate","[x² ln x / 2 − x²/4] from 1 to e"],["Evaluate","(e² + 1)/4"]]}
+/>
+
+## 5. One value gives the rest
+
+<StepReveal
+	problem={"sinh x = 4/3. Find cosh x, tanh x and x."}
+	steps={[["Identity","cosh x = √(1 + 16/9) = 5/3 (cosh is positive)"],["Ratio","tanh x = 4/5"],["Solve","eˣ = sinh x + cosh x = 3  →  x = ln 3"]]}
+/>
+
+## 6. Hyperbolic substitution
+
+<StepReveal
+	problem={"∫ dx / √(x² + 9)"}
+	steps={[["Substitute","x = 3 sinh u,  dx = 3 cosh u du"],["Simplify","√(x² + 9) = 3 cosh u, so the integral is ∫ du"],["Return","sinh⁻¹(x/3) + C = ln(x + √(x² + 9)) + C₁"]]}
+/>

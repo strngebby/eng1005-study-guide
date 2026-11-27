@@ -1,0 +1,42 @@
+---
+title: "Problem sheet"
+description: "21 mixed problems, easy to hard. Write full working, then open the answer."
+sidebar:
+  order: 4
+---
+import Problem from '../../../components/Problem.astro';
+import PrintButton from '../../../components/PrintButton.astro';
+
+<p class="lead">21 mixed problems, easy to hard. Write full working, then open the answer.</p>
+
+<PrintButton label="Print problem sheet" />
+
+## A. Warm-up
+
+<Problem n={1} q={"Is (2, −1) an eigenvector of [3 4; 1 3]? If so, give λ."} steps={[["Multiply","[3 4; 1 3](2, −1) = (6 − 4, 2 − 3) = (2, −1)"],["Compare with the input","The output equals the input, so it is an eigenvector with λ = 1"]]} a={"Yes: the output is (2, −1), so λ = 1"} />
+<Problem n={2} q={"State the eigenvalues of [6 0; 5 −2]."} steps={[["Triangular matrix","The entry above the diagonal is 0, so the matrix is triangular."],["Read the diagonal","λ = 6 and λ = −2"]]} a={"6 and −2"} />
+<Problem n={3} q={"Find the eigenvalues and eigenvectors of [2 2; 1 3]."} steps={[["Characteristic equation","trace 5, det 6 − 2 = 4\nλ² − 5λ + 4 = 0  →  λ = 1, 4"],["λ = 1","[1 2; 1 2] v = 0  →  x + 2y = 0\nv = (2, −1)"],["λ = 4","[−2 2; 1 −1] v = 0  →  y = x\nv = (1, 1)"]]} a={"λ = 1: (2, −1)\nλ = 4: (1, 1)"} />
+<Problem n={4} q={"Find the eigenvalues of [0 2; −2 0]."} steps={[["Characteristic equation","trace 0, det 0 − (2)(−2) = 4\nλ² + 4 = 0"],["Solve","λ = ±2i"]]} a={"±2i"} />
+<Problem n={5} q={"A 2 × 2 matrix has trace 7 and determinant 10. Find its eigenvalues."} steps={[["Use the 2 × 2 shortcut","λ² − 7λ + 10 = 0"],["Factorise","(λ − 2)(λ − 5) = 0  →  λ = 2, 5"]]} a={"2 and 5"} />
+<Problem n={6} q={"Describe all eigenvectors of [3 0; 0 3] and give the geometric multiplicity."} steps={[["Apply the matrix","[3 0; 0 3] v = 3v for every v"],["Count directions","Every non-zero vector is an eigenvector with λ = 3.\nTwo free variables, so geometric multiplicity 2"]]} a={"Every non-zero vector, λ = 3, multiplicity 2"} />
+
+## B. Core skills
+
+<Problem n={7} q={"For [1 −1; 1 3], find the eigenvalues and eigenvectors. Is it diagonalisable?"} steps={[["Characteristic equation","trace 4, det 3 + 1 = 4\nλ² − 4λ + 4 = (λ − 2)² = 0"],["Eigenvectors for λ = 2","[−1 −1; 1 1] v = 0  →  x + y = 0\nonly the direction (1, −1)"],["Compare multiplicities","algebraic 2, geometric 1\nNot diagonalisable"]]} a={"λ = 2 twice, only direction (1, −1)\nNot diagonalisable"} />
+<Problem n={8} q={"Find the eigenvalues and eigenvectors of [1 −5; 1 3]."} steps={[["Characteristic equation","trace 4, det 3 + 5 = 8\nλ² − 4λ + 8 = 0"],["Quadratic formula","λ = (4 ± √(16 − 32)) / 2 = 2 ± 2i"],["Solve for λ = 2 + 2i","row 2: x + (3 − (2 + 2i))y = x + (1 − 2i)y = 0\ny = 1  →  x = −1 + 2i"],["Use the conjugate","λ = 2 − 2i:  (−1 − 2i, 1)"]]} a={"2 + 2i: (−1 + 2i, 1)\n2 − 2i: (−1 − 2i, 1)"} />
+<Problem n={9} q={"Find the 2 × 2 matrix with eigenvalue 2 for (1, 1) and −1 for (1, 2)."} steps={[["Build V and D","V = [1 1; 1 2],  D = [2 0; 0 −1]"],["Invert V","det V = 1  →  V⁻¹ = [2 −1; −1 1]"],["Multiply A = V D V⁻¹","V D = [2 −1; 2 −2]\nA = [2 −1; 2 −2][2 −1; −1 1] = [5 −3; 6 −4]"],["Check","[5 −3; 6 −4](1, 1) = (2, 2) ✓\n[5 −3; 6 −4](1, 2) = (−1, −2) ✓"]]} a={"[5 −3; 6 −4]"} />
+<Problem n={10} q={"Find the eigenvalues and eigenvectors of [1 2 0; 0 3 0; 2 −4 2]."} steps={[["Expand along column 3","Only the bottom entry is non-zero:\n(2 − λ)(1 − λ)(3 − λ) = 0"],["Eigenvalues","λ = 1, 2, 3"],["λ = 1","[0 2 0; 0 2 0; 2 −4 1] v = 0\ny = 0,  2x + z = 0  →  (1, 0, −2)"],["λ = 2","[−1 2 0; 0 1 0; 2 −4 0] v = 0\ny = 0,  x = 0  →  (0, 0, 1)"],["λ = 3","[−2 2 0; 0 0 0; 2 −4 −1] v = 0\ny = x,  z = 2x − 4y = −2x  →  (1, 1, −2)"]]} a={"1: (1, 0, −2)\n2: (0, 0, 1)\n3: (1, 1, −2)"} />
+<Problem n={11} q={"Find the eigenvalues and eigenvectors of [2 1 0; 1 3 1; 0 1 2]. Check orthogonality."} steps={[["Expand along row 1","(2 − λ)[(3 − λ)(2 − λ) − 1] − 1·(2 − λ) = 0\n(2 − λ)[(3 − λ)(2 − λ) − 2] = 0"],["Factorise","(3 − λ)(2 − λ) − 2 = λ² − 5λ + 4 = (λ − 1)(λ − 4)\nλ = 1, 2, 4"],["Solve (A − λI)v = 0 for each","λ = 1: (1, −1, 1)\nλ = 2: (1, 0, −1)\nλ = 4: (1, 2, 1)"],["Check orthogonality","(1, −1, 1)·(1, 0, −1) = 0\n(1, −1, 1)·(1, 2, 1) = 0\n(1, 0, −1)·(1, 2, 1) = 0"]]} a={"1: (1, −1, 1)\n2: (1, 0, −1)\n4: (1, 2, 1)\nAll pairwise dot products are 0"} />
+<Problem n={12} q={"Find the eigenvalues of [4 2 2; 2 4 2; 2 2 4] with both multiplicities."} steps={[["Try (1, 1, 1)","A(1, 1, 1) = (8, 8, 8)  →  λ = 8"],["λ = 2","A − 2I = [2 2 2; 2 2 2; 2 2 2]\nevery row gives x + y + z = 0: two free variables"],["Confirm with the trace","trace 12 = 8 + 2 + 2 ✓"],["Multiplicities","8: algebraic 1, geometric 1\n2: algebraic 2, geometric 2"]]} a={"8: algebraic 1, geometric 1, (1, 1, 1)\n2: algebraic 2, geometric 2, x + y + z = 0"} />
+<Problem n={13} q={"Diagonalise [4 −2; 1 1]."} steps={[["Characteristic equation","trace 5, det 4 + 2 = 6\nλ² − 5λ + 6 = 0  →  λ = 2, 3"],["λ = 2","[2 −2; 1 −1] v = 0  →  v = (1, 1)"],["λ = 3","[1 −2; 1 −2] v = 0  →  v = (2, 1)"],["Build V and D","V = [1 2; 1 1],  D = [2 0; 0 3]"]]} a={"V = [1 2; 1 1], D = [2 0; 0 3]"} />
+<Problem n={14} q={"For A = [0 2; 2 0], find A¹⁰."} steps={[["Square A","A² = [0 2; 2 0][0 2; 2 0] = [4 0; 0 4] = 4I"],["Use the pattern","A¹⁰ = (A²)⁵ = (4I)⁵ = 4⁵ I = 1024 I"]]} a={"A² = 4I, so A¹⁰ = 1024 I"} />
+<Problem n={15} q={"For A = [2 1; 0 −1], use diagonalisation to find A⁵."} steps={[["Eigenvalues","Triangular: λ = 2 and −1"],["Eigenvectors","λ = 2: [0 1; 0 −3] v = 0  →  (1, 0)\nλ = −1: [3 1; 0 0] v = 0  →  (1, −3)"],["V, D and V⁻¹","V = [1 1; 0 −3],  D = [2 0; 0 −1]\nV⁻¹ = (1/3)[3 1; 0 −1]"],["A⁵ = V D⁵ V⁻¹","V D⁵ = [32 −1; 0 3]\nA⁵ = (1/3)[32 −1; 0 3][3 1; 0 −1]\n   = (1/3)[96 33; 0 −3] = [32 11; 0 −1]"]]} a={"[32 11; 0 −1]"} />
+
+## C. Applied and challenge
+
+<Problem n={16} q={"For which real k does [1 k; 1 1] have two real distinct, one repeated, or complex eigenvalues?"} steps={[["Characteristic equation","(1 − λ)² − k = 0"],["Solve","λ = 1 ± √k"],["Cases","k > 0: two real distinct\nk = 0: one repeated\nk < 0: complex pair"]]} a={"k > 0 distinct, k = 0 repeated, k < 0 complex"} />
+<Problem n={17} q={"For which k is [5 k; 0 5] diagonalisable?"} steps={[["Eigenvalues","Triangular: λ = 5 twice"],["Eigenvectors","A − 5I = [0 k; 0 0]\nk ≠ 0: ky = 0, only the direction (1, 0)\nk = 0: every vector"],["Conclude","Geometric multiplicity 2 only when k = 0"]]} a={"Only k = 0"} />
+<Problem n={18} q={"A² = A. Show that every eigenvalue of A is 0 or 1."} steps={[["Let Av = λv with v ≠ 0","A²v = A(λv) = λAv = λ²v"],["Use A² = A","A²v = Av = λv"],["Compare","λ²v = λv and v ≠ 0, so λ² = λ\nλ = 0 or 1"]]} a={"A²v = λ²v and A²v = Av = λv\nv ≠ 0, so λ² = λ"} />
+<Problem n={19} q={"Show that if Av = λv then (A + cI)v = (λ + c)v."} steps={[["Expand","(A + cI)v = Av + cIv"],["Substitute Av = λv","= λv + cv = (λ + c)v"]]} a={"(A + cI)v = Av + cv = (λ + c)v"} />
+<Problem n={20} q={"Show that A and Aᵀ have the same eigenvalues."} steps={[["Transpose of A − λI","(A − λI)ᵀ = Aᵀ − λI"],["Determinant of a transpose","det(Aᵀ − λI) = det((A − λI)ᵀ) = det(A − λI)"],["Conclude","Same characteristic equation, so the same eigenvalues"]]} a={"det(Aᵀ − λI) = det((A − λI)ᵀ) = det(A − λI)"} />
+<Problem n={21} q={"Each year, 50% of town X stays and 50% moves to Y; 70% of Y stays and 30% moves to X. With 800 people, find the steady populations."} steps={[["Set up","x = (X, Y),  M = [0.5 0.3; 0.5 0.7]"],["Steady state Mx = x","0.5X + 0.3Y = X  →  0.3Y = 0.5X  →  Y = 5X/3"],["Use the total","X + 5X/3 = 800  →  X = 300,  Y = 500"]]} a={"Solve Mx = x with M = [0.5 0.3; 0.5 0.7]\nX = 300, Y = 500"} />

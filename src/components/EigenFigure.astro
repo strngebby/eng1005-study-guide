@@ -1,0 +1,24 @@
+---
+/** Eigenvector explorer: turn v with θ and see Av. <EigenFigure /> */
+import { drawEig, EIG_PRESETS, type Mat } from '../lib/plots';
+import './FigureControls.css';
+const start: Mat = [1.5, 0.5, 0.5, 1.5], deg = 20;
+const first = drawEig(start, deg);
+---
+<figure class="eig fig2d fig-side not-content">
+	<svg viewBox="-160 -130 320 260" role="img" aria-label="A vector v and its image Av" set:html={first.svg} />
+	<label class="label print-hide">θ<input type="range" data-e="t" aria-label="Turn v" min="0" max="360" step="1" value={deg} /></label>
+	<div class="row print-hide">{EIG_PRESETS.map(([n, m]) => <button class="btn alt pre" type="button" data-m={JSON.stringify(m)}>{n}</button>)}</div>
+	<div class="print-hide">{['a', 'b', 'c', 'd'].map((n, i) => <label class="label">{n}<input type="range" data-e={i} min="-2" max="2" step="0.5" value={start[i]} /></label>)}</div>
+	<figcaption aria-live="polite">{first.cap}</figcaption>
+</figure>
+<script>
+	import { drawEig, type Mat } from '../lib/plots';
+	document.querySelectorAll<HTMLElement>('figure.eig').forEach((f) => {
+		const q = (s: string) => f.querySelector<HTMLInputElement>(`[data-e="${s}"]`)!;
+		const m = [0, 1, 2, 3].map((i) => q(String(i)));
+		const draw = () => { const r = drawEig(m.map((s) => +s.value) as Mat, +q('t').value); f.querySelector('svg')!.innerHTML = r.svg; f.querySelector('figcaption')!.textContent = r.cap; };
+		f.querySelectorAll('input').forEach((s) => s.addEventListener('input', draw));
+		f.querySelectorAll<HTMLButtonElement>('button.pre').forEach((b) => b.addEventListener('click', () => { (JSON.parse(b.dataset.m!) as Mat).forEach((v, i) => (m[i].value = String(v))); draw(); }));
+	});
+</script>

@@ -1,0 +1,51 @@
+---
+title: "Worked solutions"
+description: "Try each step yourself before revealing it."
+sidebar:
+  order: 2
+---
+import StepReveal from '../../../components/StepReveal.astro';
+
+<p class="lead">Try each step yourself before revealing it.</p>
+
+## 1. Partial derivatives with the product and chain rules
+
+<StepReveal
+	problem={"f(x, y) = x³y² + sin(xy). Find fx and fy."}
+	steps={[["Treat y as constant","fx = 3x²y² + y cos(xy)"],["Treat x as constant","fy = 2x³y + x cos(xy)"]]}
+/>
+
+## 2. Contours and the gradient
+
+<StepReveal
+	problem={"Describe the contours of f = y − x² and find ∇f at (1, 3)."}
+	steps={[["Set f = C","y = x² + C: parabolas shifted up and down"],["Gradient","∇f = (−2x, 1)  →  (−2, 1)"],["Check","at (1, 3) the contour is y = x² + 2\nits tangent is (1, 2)\n(1, 2) · (−2, 1) = 0 ✓"]]}
+/>
+
+## 3. Directional derivative
+
+<StepReveal
+	problem={"f = x²y + y³. Find the slope at (2, 1) in the direction (−3, 4)."}
+	steps={[["Gradient","∇f = (2xy, x² + 3y²)  →  (4, 7)"],["Unit direction","û = (−3, 4)/5"],["Dot product","(−12 + 28)/5 = 16/5"]]}
+/>
+
+## 4. Fastest increase in 3 variables
+
+<StepReveal
+	problem={"f = x eʸ + z². At (2, 0, 1), which way does f increase fastest, and how fast?"}
+	steps={[["Gradient","∇f = (eʸ, x eʸ, 2z)  →  (1, 2, 2)"],["Direction","(1, 2, 2)/3"],["Rate","|∇f| = 3"]]}
+/>
+
+## 5. Tangent plane and estimate
+
+<StepReveal
+	problem={"f = √(x² + y²). Find the tangent plane at (3, 4) and estimate f(3.1, 3.9)."}
+	steps={[["Value and gradient","f(3, 4) = 5\n∇f = (x, y)/f  →  (3/5, 4/5)"],["Plane","z = 5 + 3/5 (x − 3) + 4/5 (y − 4)\nz = (3x + 4y)/5"],["Estimate","(9.3 + 15.6)/5 = 4.98"]]}
+/>
+
+## 6. Checking a differential equation
+
+<StepReveal
+	problem={"Show u = sin(x − 3t) satisfies utt = 9 uxx."}
+	steps={[["Time derivatives","ut = −3 cos(x − 3t)\nutt = −9 sin(x − 3t)"],["Space derivatives","ux = cos(x − 3t)\nuxx = −sin(x − 3t)"],["Compare","9 uxx = −9 sin(x − 3t) = utt ✓"]]}
+/>

@@ -1,0 +1,82 @@
+---
+title: "Multivariable calculus II"
+description: "Find and classify maxima and minima, work with constraints, and describe curves and surfaces with parameters."
+sidebar:
+  label: "Introduction and explanation"
+  order: 1
+---
+import Eq from '../../../components/Eq.astro';
+import Figure3D from '../../../components/Figure3D.astro';
+import { FIG } from '../../../data/week-6/figures';
+import ContourMap from '../../../components/ContourMap.astro';
+
+<p class="lead">Find and classify maxima and minima, work with constraints, and describe curves and surfaces with parameters.</p>
+
+## Critical points
+
+At a local maximum or minimum the surface is flat in **every** direction. A point with ∇f = 0 is a **critical point**.
+
+<Eq>{"solve together:  fx = 0  and  fy = 0"}</Eq>
+
+Factorise each equation and treat every case separately, so no solution is lost. Not every critical point is a maximum or minimum.
+
+<ContourMap set="ct6" />
+
+## Classifying them
+
+The **Hessian** holds the second derivatives.
+
+<Eq>{"H = [fxx  fxy]      det H = fxx fyy − fxy²\n    [fxy  fyy]"}</Eq>
+
+| At the critical point | Type |
+| --- | --- |
+| det H &gt; 0 and fxx &gt; 0 | Local minimum |
+| det H &gt; 0 and fxx &lt; 0 | Local maximum |
+| det H &lt; 0 | Saddle |
+| det H = 0 | Test fails: examine f directly |
+
+Both eigenvalues of H positive means a minimum, both negative a maximum, mixed signs a saddle.
+
+## Absolute maximum and minimum
+
+On a closed, bounded region, compare values at:
+
+<Eq>{"1. critical points inside the region\n2. critical points along each boundary piece\n3. every corner"}</Eq>
+
+On a boundary, substitute to get a function of one variable. The largest value in the list is the absolute maximum.
+
+## Lagrange multipliers
+
+To optimise f subject to g(x, y) = c, look for points where a contour of f just touches the constraint. There the gradients are parallel.
+
+<Eq>{"∇f = λ ∇g\ng(x, y) = c"}</Eq>
+
+Check before dividing: a variable you divide by might be zero. Then evaluate f at every solution.
+
+## Parametric curves
+
+A curve can be traced by a moving point r(t). Its derivative is the **tangent vector**.
+
+<Eq>{"circle    (a + R cos t, b + R sin t)\nellipse   (a + p cos t, b + q sin t)\nsegment   P + t(Q − P),  0 ≤ t ≤ 1\ntangent   dr/dt = (x′(t), y′(t), z′(t))"}</Eq>
+
+Parameterisations are not unique.
+
+<Figure3D {...FIG.helix} />
+
+## Parametric surfaces
+
+A surface needs **two** parameters.
+
+<Eq>{"graph z = f(x, y)   (s, t, f(s, t))\ncylinder            (R cos θ, R sin θ, t)\nellipsoid           (a cos s cos t, b cos s sin t, c sin s)\n                    −π/2 ≤ s ≤ π/2,  0 ≤ t < 2π"}</Eq>
+
+## Which tool do I use?
+
+| You want | Use |
+| --- | --- |
+| Flat points | ∇f = 0 |
+| Type of point | Sign of det H, then fxx |
+| Extremes on a region | Interior, boundary and corners |
+| Optimise with a constraint | ∇f = λ∇g with the constraint |
+| Describe a curve | One parameter |
+| Direction of a curve | r′(t) |
+| Describe a surface | Two parameters |
