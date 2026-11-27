@@ -77,6 +77,16 @@ instead of `"…"` when a string contains `\n`.
 5. Run `npm run dev`, check the pages, then commit and push. GitHub Actions
    rebuilds and deploys the site automatically.
 
+## Feedback button
+
+Every page ends with a "Give feedback" button that opens a Google Form, with
+the page name filled in. Set it up in `src/feedback.config.ts`:
+
+- `formUrl`: the form's link (ending in `/viewform`). While empty, the button is hidden.
+- `pageField`: the `entry.…` id of the form's "Page" question. To find it, open the
+  form's ⋮ menu → **Get pre-filled link**, type anything in "Page", click
+  **Get link**, and copy the `entry.…` part from that link.
+
 ## Content rules
 
 - Only the website source goes in this repository: no lecture slides, unit PDFs,

@@ -1,0 +1,26 @@
+---
+/** "Give feedback" link to the Google Form, with the current page filled in. */
+import { FEEDBACK } from '../feedback.config';
+const title = Astro.locals.starlightRoute?.entry?.data?.title ?? '';
+const path = Astro.url.pathname.replace(import.meta.env.BASE_URL.replace(/\/$/, ''), '') || '/';
+let href = '';
+if (FEEDBACK.formUrl) {
+	const u = new URL(FEEDBACK.formUrl);
+	if (FEEDBACK.pageField) {
+		u.searchParams.set('usp', 'pp_url');
+		u.searchParams.set(FEEDBACK.pageField, `${title} (${path})`);
+	}
+	href = u.toString();
+}
+---
+{href && (
+	<aside class="feedback print-hide not-content">
+		<p><b>Spotted a mistake, or something unclear?</b> Tell me in an anonymous feedback form.</p>
+		<a class="btn" href={href} target="_blank" rel="noopener">Give feedback</a>
+	</aside>
+)}
+<style>
+	.feedback { display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: center; justify-content: space-between; margin-top: 2rem; padding: 14px 18px; background: var(--card); border: 1px solid var(--line); border-left: 4px solid var(--accent); border-radius: 4px; }
+	.feedback p { margin: 0; font-size: .92rem; }
+	.feedback .btn { text-decoration: none; display: inline-block; }
+</style>
